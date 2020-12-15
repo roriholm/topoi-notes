@@ -1,0 +1,40 @@
+\ProvidesPackage{common}
+
+\usepackage{color}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\usepackage{amsmath,amsfonts,amsthm,amstext,amssymb,graphicx,bm}
+\usepackage{multicol,lastpage,fullpage,framed,fancybox,enumerate,tikz}
+\usepackage{../quiver}
+\usepackage[margin=.5in]{geometry}
+\usepackage[normalem]{ulem}
+
+\def\sset{\subset}
+% Blackboard bolded letters (\R for reals, \Z for integers, etc)
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+% Script P for power sets
+\def\P{\mathcal{P}}
+
+\def\A{\mathfrak{A}}
+\def\B{\mathfrak{B}}
+\def\C{\mathfrak{C}}
+\def\D{\mathfrak{D}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+
+\newcounter{definition}
+\newcommand{\tutsec}[1]{\begin{center}\textbf{#1}\end{center}}
+\newenvironment{definition}[1][]{\begin{framed}\refstepcounter{definition}\textbf{Def:} #1}{\end{framed}}
+
+\newtheorem*{example}{Example}
+
+
+\newcommand{\contributors}{R. Riley Holmes}
+
+\newcommand{\chapter}[2]{
+    \textbf{Topoi by Robert Goldblatt\\
+Notes by R. Riley Holmes\\
+Chapter #1: #2}}
