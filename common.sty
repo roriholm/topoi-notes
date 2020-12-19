@@ -23,18 +23,20 @@
 \def\D{\mathfrak{D}}
 
 \newcommand{\set}[1]{\left\{#1\right\}}
-
+\def\inv{^{-1}}
+\def\o{\circ}
 
 \newcounter{definition}
 \newcommand{\tutsec}[1]{\begin{center}\textbf{#1}\end{center}}
 \newenvironment{definition}[1][]{\begin{framed}\refstepcounter{definition}\textbf{Def:} #1}{\end{framed}}
 
 \newtheorem*{example}{Example}
+\newtheorem{fact}{Fact}
 
 
 \newcommand{\contributors}{R. Riley Holmes}
 
 \newcommand{\chapter}[2]{
     \textbf{Topoi by Robert Goldblatt\\
-Notes by R. Riley Holmes\\
+Notes by \contributors\\
 Chapter #1: #2}}

@@ -1,4 +1,4 @@
-\documentclass[12pt]{letter}
+\documentclass[12pt]{article}
 \usepackage{../common}
 \begin{document}
 
@@ -42,8 +42,8 @@ For example, let $a = 3$.
     \arrow[from=1-5, to=1-6]
 \end{tikzcd}\]
 
-Objects in $C \downarrow 3$ are statements of `n-less-than-3' relationships.
-Arrows in $C \downarrow 3$ from `m-less-than-3' to `n-less-than-3' are `m-less-than-m'.
+Objects in $C \downarrow 3$ are statements of `$n \leq 4$' relationships.
+Arrows in $C \downarrow 3$ from `$m \leq 3$' to `$n\leq 3$' are `$m\leq n$'.
 
 \[\begin{tikzcd}
     {(1 \leq 3)} && {(2 \leq 3)} && {(3 \leq 3)}
@@ -60,13 +60,13 @@ Recall $\textbf{Matr(k)}$ has the natural numbers $\N$ as objects, and $(n\times
 
 Then $\textbf{Matr(k)} \downarrow 3$ has as objects all $3\times n$ matrices where $n \in \N$.
 
-Then if object $A$ is a $3\times m$ matrix, and object $C$ is a $3\times n$ matrix,
-then an arrow $B : A \to C$ is an $m \times n$ matrix such that $A=BC$.
+Then if object $A$ is a $3\times m$ matrix, and object $B$ is a $3\times n$ matrix,
+then an arrow $C : A \to B$ is an $n \times m$ matrix such that $A=BC$.
 
 Thus the situation in $\textbf{Matr(k)} \downarrow 3$ is
 \[\begin{tikzcd}
-    {A_{3\times m}} && {C_{3\times n}}
-    \arrow["{B_{n\times m}}", from=1-1, to=1-3]
+    {A_{3\times m}} && {B_{3\times n}}
+    \arrow["{C_{n\times m}}", from=1-1, to=1-3]
 \end{tikzcd}\]
 
 indicating that this diagram commutes in $\textbf{Matr(k)}$:
@@ -75,8 +75,8 @@ indicating that this diagram commutes in $\textbf{Matr(k)}$:
     \\
     & {3}
     \arrow["{A_{3\times m}}"', from=1-1, to=3-2]
-    \arrow["{C_{3\times n}}", from=1-3, to=3-2]
-    \arrow["{B_{n\times m}}", from=1-1, to=1-3]
+    \arrow["{B_{3\times n}}", from=1-3, to=3-2]
+    \arrow["{C_{n\times m}}", from=1-1, to=1-3]
 \end{tikzcd}\]
 
 \end{example}

@@ -1,7 +1,154 @@
-\documentclass[12pt]{letter}
+\documentclass[12pt]{article}
 \usepackage{../common}
 \begin{document}
 
 \chapter{3}{Arrows Instead of Epsilon}
+
+\section{Monic arrows}
+    Monic arrows are an abstraction of injective functions.
+    \begin{definition}
+    An arrow $f:a\to b$ in a category $C$ is \emph{monic} if for any $g_1, g_2$ with codomain $a$, the implication
+    $$f \circ g_1 = f \circ g_2 \implies g_1 = g_2$$
+    holds. Or, if the diagram
+    \[\begin{tikzcd}
+        {c} && {a} && {b}
+        \arrow["{f}", from=1-3, to=1-5]
+        \arrow["{g_1}", from=1-1, to=1-3, curve={height=-6pt}]
+        \arrow["{g_2}", from=1-1, to=1-3, curve={height=6pt}]
+    \end{tikzcd}\]
+    commutes, then $g_1 = g_2$.
+    \end{definition}
+
+    \subsection*{Exercises}
+        For both exercises in this section, take the situation to be as follows:
+        \[\begin{tikzcd}
+            {s} && {a} && {b} && {c}
+            \arrow["{f}", from=1-3, to=1-5]
+            \arrow["{h_1}", from=1-1, to=1-3, curve={height=-6pt}]
+            \arrow["{h_2}", from=1-1, to=1-3, curve={height=6pt}]
+            \arrow["{g}", from=1-5, to=1-7]
+        \end{tikzcd}\]
+        Where $f$ and $g$ are fixed, and $s, h_1, h_2$ are `any such' objects/arrows.
+        \begin{enumerate}
+        \item Suppose that $f$ and $g$ are both monic, and that 
+        $g \circ (f \circ h_1) = g \circ (f \circ h_2)$.
+        Since $g$ is monic, that implies $f \circ h_1 = f \circ h_2$.
+        But since $f$ is monic, that implies $h_1 = h_2$. So using associativity and collapsing the chain of implication gives
+        $$(g \circ f) \circ h_1 = (g \circ f) \circ h_2 \implies h_1 = h_2.$$
+        Conclude $g \circ f$ is monic.
+
+        \item Now suppose that $g \circ f$ is monic.
+        If $f \circ h_1 = f \circ h_2$ then clearly $g \circ (f \circ h_1) = g \circ (f \circ h_2)$.
+        Then $(g \circ f) \circ h_1 = (g \circ f) \circ h_2$ and since $g \circ f$ is monic, $h_1 = h_2$. So 
+        $$f \circ h_1 = f \circ h_2 \implies h_1 = h_2,$$
+        meaning $f$ is monic.
+        \end{enumerate}
+
+\section{Epic arrows}
+    \begin{definition}
+    If $f$ is \emph{epic} then commutativity of
+        \[\begin{tikzcd}
+            {a} && {b} && {c}
+            \arrow["{f}", from=1-1, to=1-3]
+            \arrow["{g_1}", from=1-3, to=1-5, curve={height=-6pt}]
+            \arrow["{g_2}", from=1-3, to=1-5, curve={height=6pt}]
+        \end{tikzcd}\]
+    implies $g_1 = g_2$.
+    \end{definition}
+
+\section{Iso arrows}
+    \begin{definition}
+        An arrow $f : a \to b$ is \emph{iso} if there exists another arrow $f\inv : b \to a$
+        such that 
+            $$f \circ f\inv = 1_b$$
+            and
+            $$f\inv \circ f = 1_a.$$
+        This diagram commutes when the identity loops are included:
+        \[\begin{tikzcd}
+            {a} && {b}
+            \arrow["{f}", from=1-1, to=1-3, curve={height=-12pt}]
+            \arrow["{f\inv}", from=1-3, to=1-1, curve={height=-12pt}]
+        \end{tikzcd}\]
+    \end{definition}
+
+    \begin{fact}
+        If an arrow is iso then it is epic and monic, but the converse isn't necessarily true.
+        The converse \emph{is} true in \textbf{Set} and any Topos.
+    \end{fact}
+
+    \subsection{Exercises}
+        \begin{enumerate}
+            \item For any object $a$, the identity morphism $1_a$ is an inverse to itself and therefore is iso. Simply because
+            $$1_a \o 1_a = 1_a.$$
+            \[\begin{tikzcd}
+                {a} && {a}
+                \arrow["{1_a}", from=1-1, to=1-3, curve={height=-12pt}]
+                \arrow["{1_a}", from=1-3, to=1-1, curve={height=-12pt}]
+            \end{tikzcd}\]
+
+            \item If $f : a \to b$ is iso then we can retrieve $f \inv$ and then plug it right into the definition and find
+            $$f\inv \circ f = 1_a$$
+            and
+            $$f \circ f\inv = 1_b,$$
+            indicating that $f\inv$ is iso.
+            \[\begin{tikzcd}
+                {a} && {b}
+                \arrow["{f\inv}", from=1-1, to=1-3, curve={height=-12pt}]
+                \arrow["{f}", from=1-3, to=1-1, curve={height=-12pt}]
+            \end{tikzcd}\]
+
+            \item With $f : a \to b$ and $g : b \to c$ both iso, the situation looks like the following:
+            \[\begin{tikzcd}
+                {a} && {b} && {c}
+                \arrow["{f}", from=1-1, to=1-3, curve={height=-12pt}]
+                \arrow["{f\inv}", from=1-3, to=1-1, curve={height=-12pt}]
+                \arrow["{g\inv}", from=1-5, to=1-3, curve={height=-12pt}]
+                \arrow["{g}", from=1-3, to=1-5, curve={height=-12pt}]
+            \end{tikzcd}\]
+            Now we find that 
+            $$(f\inv \o g\inv) \o (g \o f)
+            = f\inv \o (g\inv \o g) \o f
+            = f\inv \o 1_b \o f
+            = f\inv \o f
+            = 1_a$$
+            and
+            $$(g \o f) \o (f\inv \o g\inv)
+            = g  \o (f \o f\inv) \o g\inv
+            = g \o 1_b \o g\inv
+            = g \o g\inv
+            = 1_c.$$
+            Thus $(f\inv \o g\inv)$ acts as an inverse to $g \o f$,
+            and $g \o f$ is iso.        
+        \end{enumerate}
+
+\section{Isomorphic objects}
+
+    \begin{definition}
+        Two $C$-objects $a$ and $b$ are \emph{isomorphic}, or 
+        $$a \cong b$$ 
+        if there exists an iso $C$-arrow
+        $$f: a \to b.$$
+    \end{definition}
+
+    \begin{definition}
+        A category $C$ is \emph{skeletal} if $a \cong b$ implies $a = b$.
+    \end{definition}
+
+    \subsection{Exercises}
+        \begin{enumerate}
+            \item We wish to show that object isomorphism is an equivalence relation, or that it's reflexive, symmetric, and transitive. Fortunately the exercises from section 3 correspond exactly to these properties.
+            \begin{enumerate}[(i)]
+                \item $a \cong a$ since $1_a$ is iso.
+                \item If $a \cong b$ then some $f : a \to b$ is iso, and therefore $f\inv : b \to a$ is iso.
+                \item If $a \cong b$ and $b \cong c$ then we have iso arrows $f : a \to b$ and $g : b \to c$. Then $g \o f$ is iso, and $a \cong c$.
+            \end{enumerate}
+
+            \item Suppose $a$ and $b$ are two \textbf{Finord}-objects such that $a \cong b$. Then there is some $f : a \to b$ that is iso.
+            Since \textbf{Finord} is a subcategory of \textbf{Set}, iso arrows correspond to bijective functions.
+            Then $a$ and $b$ must have the same cardinality, but by the definition of \textbf{Finord} distinct objects have distinct cardinalities. So $a = b$ and \textbf{Finord} is skeletal.
+            
+        \end{enumerate}
+
+
 
 \end{document}
