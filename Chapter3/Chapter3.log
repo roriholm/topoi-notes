@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.12)  19 DEC 2020 18:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.12)  20 DEC 2020 00:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -711,18 +711,19 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+
 
 AED: lastpage setting LastPage
-[3] (./Chapter3.aux) ) 
+[6] (./Chapter3.aux) ) 
 Here is how much of TeX's memory you used:
- 15536 strings out of 481248
- 318312 string characters out of 5922068
- 537556 words of memory out of 5000000
- 30481 multiletter control sequences out of 15000+600000
+ 16280 strings out of 481248
+ 336896 string characters out of 5922068
+ 569901 words of memory out of 5000000
+ 31225 multiletter control sequences out of 15000+600000
  541775 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,16n,94p,428b,1042s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,16n,94p,428b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti1
 0.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:
@@ -734,10 +735,10 @@ ic/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
 .pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Chapter3.pdf (3 pages, 122178 bytes).
+Output written on Chapter3.pdf (6 pages, 142519 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
