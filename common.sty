@@ -7,6 +7,9 @@
 \usepackage{../quiver}
 \usepackage[margin=.5in]{geometry}
 \usepackage[normalem]{ulem}
+\usepackage{mdframed}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
 \def\sset{\subset}
 % Blackboard bolded letters (\R for reals, \Z for integers, etc)
@@ -22,21 +25,28 @@
 \def\C{\mathfrak{C}}
 \def\D{\mathfrak{D}}
 
+\newcommand{\de}[1]{definition \autoref{#1}}
+\newcommand{\fac}[1]{fact \autoref{#1}}
+
 \newcommand{\set}[1]{\left\{#1\right\}}
 \def\inv{^{-1}}
 \def\o{\circ}
 
 \newcounter{definition}
-\newcommand{\tutsec}[1]{\begin{center}\textbf{#1}\end{center}}
-\newenvironment{definition}[1][]{\begin{framed}\refstepcounter{definition}\textbf{Def:} #1}{\end{framed}}
+%\newcommand{\tutsec}[1]{\begin{center}\textbf{#1}\end{center}}
+\theoremstyle{definition}
+\newmdtheoremenv{defi}{Definition}[section]
+%\newenvironment{definition}[1][]{\begin{framed}\refstepcounter{definition}\textbf{Def:} #1}{\end{framed}}
 
 \newtheorem*{example}{Example}
-\newtheorem{fact}{Fact}
-
+\theoremstyle{plain} % regular italic
+\newtheorem{fact}[defi]{Fact}
+\theoremstyle{definition} % Plain text
+\newtheorem{exercise}{Exercise}[section]
 
 \newcommand{\contributors}{R. Riley Holmes}
 
 \newcommand{\chapter}[2]{
     \textbf{Topoi by Robert Goldblatt\\
-Notes by \contributors\\
-Chapter #1: #2}}
+    Notes by \contributors\\
+    Chapter #1: #2}}

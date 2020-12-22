@@ -3,10 +3,9 @@
 \begin{document}
 
 \chapter{3}{Arrows Instead of Epsilon}
-
 \section{Monic arrows}
     Monic arrows are an abstraction of injective functions.
-    \begin{definition}
+    \begin{defi}
     An arrow $f:a\to b$ in a category $C$ is \emph{monic} if for any $g_1, g_2$ with codomain $a$, the implication
     $$f \circ g_1 = f \circ g_2 \implies g_1 = g_2$$
     holds. Or, if the diagram
@@ -17,40 +16,42 @@
         \arrow["{g_2}"', from=1-1, to=1-3, curve={height=6pt}]
     \end{tikzcd}\]
     commutes, then $g_1 = g_2$.
-    \end{definition}
+    \end{defi}
 
-    \begin{definition}
+    \begin{defi}
         \emph{(Alternatively, Riehl pg. 11)} An arrow $f : a \to b$ is \emph{monic} iff for any $C$-object $c$, post-composition with $f$ defines an injection $f_* : C(c,a) \to C(c,b)$.
         (Here $C(x,y)$ is the set of $C$-arrows from $x$ to $y$.)
-    \end{definition}
+    \end{defi}
 
-    \subsection*{Exercises}
-        For both exercises in this section, take the situation to be as follows:
-        \[\begin{tikzcd}
-            {s} && {a} && {b} && {c}
-            \arrow["{f}", from=1-3, to=1-5]
-            \arrow["{h_1}", from=1-1, to=1-3, curve={height=-6pt}]
-            \arrow["{h_2}"', from=1-1, to=1-3, curve={height=6pt}]
-            \arrow["{g}", from=1-5, to=1-7]
-        \end{tikzcd}\]
-        Where $f$ and $g$ are fixed, and $s, h_1, h_2$ are `any such' objects/arrows.
-        \begin{enumerate}
+    For both exercises in this section, take the situation to be as follows:
+    \[\begin{tikzcd}
+        {s} && {a} && {b} && {c}
+        \arrow["{f}", from=1-3, to=1-5]
+        \arrow["{h_1}", from=1-1, to=1-3, curve={height=-6pt}]
+        \arrow["{h_2}"', from=1-1, to=1-3, curve={height=6pt}]
+        \arrow["{g}", from=1-5, to=1-7]
+    \end{tikzcd}\]
+    Where $f$ and $g$ are fixed, and $s, h_1, h_2$ are `any such' objects/arrows.
+
+    \begin{exercise}
         \item Suppose that $f$ and $g$ are both monic, and that 
         $g \circ (f \circ h_1) = g \circ (f \circ h_2)$.
         Since $g$ is monic, that implies $f \circ h_1 = f \circ h_2$.
         But since $f$ is monic, that implies $h_1 = h_2$. So using associativity and collapsing the chain of implication gives
         $$(g \circ f) \circ h_1 = (g \circ f) \circ h_2 \implies h_1 = h_2.$$
         Conclude $g \circ f$ is monic.
+    \end{exercise}
 
+    \begin{exercise}
         \item Now suppose that $g \circ f$ is monic.
         If $f \circ h_1 = f \circ h_2$ then clearly $g \circ (f \circ h_1) = g \circ (f \circ h_2)$.
         Then $(g \circ f) \circ h_1 = (g \circ f) \circ h_2$ and since $g \circ f$ is monic, $h_1 = h_2$. So 
         $$f \circ h_1 = f \circ h_2 \implies h_1 = h_2,$$
         meaning $f$ is monic.
-        \end{enumerate}
+    \end{exercise}
 
 \section{Epic arrows}
-    \begin{definition}
+    \begin{defi}
     If $f$ is \emph{epic} then commutativity of
         \[\begin{tikzcd}
             {a} && {b} && {c}
@@ -59,14 +60,15 @@
             \arrow["{g_2}"', from=1-3, to=1-5, curve={height=6pt}]
         \end{tikzcd}\]
     implies $g_1 = g_2$.
-    \end{definition}
+    \end{defi}
 
-    \begin{definition}
+    \begin{defi}
         \emph{(Alternatively, Riehl pg. 11)} An arrow $f : a \to b$ is \emph{epic} iff for any $C$-object $c$, pre-composition with $f$ defines an injection $f^* : C(b,x) \to C(a,c)$.
         (Here $C(x,y)$ is the set of $C$-arrows from $x$ to $y$.)
-    \end{definition}
+    \end{defi}
 
     Dually to the exercises proven in the previous section we have
+
     \begin{fact}
         If $f : a \to b$ and $g : b \to c$ are epic, then $g \o f : a \to c$ is epic.
     \end{fact}
@@ -77,7 +79,7 @@
 
 
 \section{Iso arrows}
-    \begin{definition}
+    \begin{defi}
         An arrow $f : a \to b$ is \emph{iso} if there exists another arrow $f\inv : b \to a$
         such that 
             $$f \circ f\inv = 1_b$$
@@ -89,90 +91,93 @@
             \arrow["{f}", from=1-1, to=1-3, curve={height=-12pt}]
             \arrow["{f\inv}", from=1-3, to=1-1, curve={height=-12pt}]
         \end{tikzcd}\]
-    \end{definition}
+    \end{defi}
 
     \begin{fact}
         If an arrow is iso then it is epic and monic, but the converse isn't necessarily true.
         The converse \emph{is} true in \textbf{Set} and any Topos.
     \end{fact}
 
-    \subsection*{Exercises}
-        \begin{enumerate}
-            \item For any object $a$, the identity morphism $1_a$ is an inverse to itself and therefore is iso. Simply because
-            $$1_a \o 1_a = 1_a.$$
-            \[\begin{tikzcd}
-                {a} && {a}
-                \arrow["{1_a}", from=1-1, to=1-3, curve={height=-12pt}]
-                \arrow["{1_a}", from=1-3, to=1-1, curve={height=-12pt}]
-            \end{tikzcd}\]
+    \begin{exercise} 
+        For any object $a$, the identity morphism $1_a$ is an inverse to itself and therefore is iso. Simply because
+        $$1_a \o 1_a = 1_a.$$
+        \[\begin{tikzcd}
+            {a} && {a}
+            \arrow["{1_a}", from=1-1, to=1-3, curve={height=-12pt}]
+            \arrow["{1_a}", from=1-3, to=1-1, curve={height=-12pt}]
+        \end{tikzcd}\]
+    \end{exercise}
 
-            \item If $f : a \to b$ is iso then we can retrieve $f \inv$ and then plug it right into the definition and find
-            $$f\inv \circ f = 1_a$$
-            and
-            $$f \circ f\inv = 1_b,$$
-            indicating that $f\inv$ is iso.
-            \[\begin{tikzcd}
-                {a} && {b}
-                \arrow["{f\inv}", from=1-1, to=1-3, curve={height=-12pt}]
-                \arrow["{f}", from=1-3, to=1-1, curve={height=-12pt}]
-            \end{tikzcd}\]
+    \begin{exercise}
+        If $f : a \to b$ is iso then we can retrieve $f \inv$ and then plug it right into the definition and find
+        $$f\inv \circ f = 1_a$$
+        and
+        $$f \circ f\inv = 1_b,$$
+        indicating that $f\inv$ is iso.
+        \[\begin{tikzcd}
+            {a} && {b}
+            \arrow["{f\inv}", from=1-1, to=1-3, curve={height=-12pt}]
+            \arrow["{f}", from=1-3, to=1-1, curve={height=-12pt}]
+        \end{tikzcd}\]
+    \end{exercise}
 
-            \item With $f : a \to b$ and $g : b \to c$ both iso, the situation looks like the following:
-            \[\begin{tikzcd}
-                {a} && {b} && {c}
-                \arrow["{f}", from=1-1, to=1-3, curve={height=-12pt}]
-                \arrow["{f\inv}", from=1-3, to=1-1, curve={height=-12pt}]
-                \arrow["{g\inv}", from=1-5, to=1-3, curve={height=-12pt}]
-                \arrow["{g}", from=1-3, to=1-5, curve={height=-12pt}]
-            \end{tikzcd}\]
-            Now we find that 
-            $$(f\inv \o g\inv) \o (g \o f)
-            = f\inv \o (g\inv \o g) \o f
-            = f\inv \o 1_b \o f
-            = f\inv \o f
-            = 1_a$$
-            and
-            $$(g \o f) \o (f\inv \o g\inv)
-            = g  \o (f \o f\inv) \o g\inv
-            = g \o 1_b \o g\inv
-            = g \o g\inv
-            = 1_c.$$
-            Thus $(f\inv \o g\inv)$ acts as an inverse to $g \o f$,
-            and $g \o f$ is iso.        
-        \end{enumerate}
+    \begin{exercise}
+        With $f : a \to b$ and $g : b \to c$ both iso, the situation looks like the following:
+        \[\begin{tikzcd}
+            {a} && {b} && {c}
+            \arrow["{f}", from=1-1, to=1-3, curve={height=-12pt}]
+            \arrow["{f\inv}", from=1-3, to=1-1, curve={height=-12pt}]
+            \arrow["{g\inv}", from=1-5, to=1-3, curve={height=-12pt}]
+            \arrow["{g}", from=1-3, to=1-5, curve={height=-12pt}]
+        \end{tikzcd}\]
+        Now we find that 
+        $$(f\inv \o g\inv) \o (g \o f)
+        = f\inv \o (g\inv \o g) \o f
+        = f\inv \o 1_b \o f
+        = f\inv \o f
+        = 1_a$$
+        and
+        $$(g \o f) \o (f\inv \o g\inv)
+        = g  \o (f \o f\inv) \o g\inv
+        = g \o 1_b \o g\inv
+        = g \o g\inv
+        = 1_c.$$
+        Thus $(f\inv \o g\inv)$ acts as an inverse to $g \o f$,
+        and $g \o f$ is iso.        
+    \end{exercise}
+
 
 \section{Isomorphic objects}
 
-    \begin{definition}
+    \begin{defi}
         Two $C$-objects $a$ and $b$ are \emph{isomorphic}, or 
         $$a \cong b$$ 
         if there exists an iso $C$-arrow
         $$f: a \to b.$$
-    \end{definition}
+    \end{defi}
 
-    \begin{definition}
+    \begin{defi}
         A category $C$ is \emph{skeletal} if $a \cong b$ implies $a = b$.
-    \end{definition}
+    \end{defi}
 
-    \subsection*{Exercises}
-        \begin{enumerate}
-            \item We wish to show that object isomorphism is an equivalence relation, or that it's reflexive, symmetric, and transitive. Fortunately the exercises from section 3 correspond exactly to these properties.
-            \begin{enumerate}[(i)]
-                \item $a \cong a$ since $1_a$ is iso.
-                \item If $a \cong b$ then some $f : a \to b$ is iso, and therefore $f\inv : b \to a$ is iso and $b \cong a$.
-                \item If $a \cong b$ and $b \cong c$ then we have iso arrows $f : a \to b$ and $g : b \to c$. Then $g \o f$ is iso, and $a \cong c$.
-            \end{enumerate}
-
-            \item Suppose $a$ and $b$ are two \textbf{Finord}-objects such that $a \cong b$. Then there is some $f : a \to b$ that is iso.
-            Since \textbf{Finord} is a subcategory of \textbf{Set}, iso arrows correspond to bijective functions.
-            Then $a$ and $b$ must have the same cardinality, but by the definition of \textbf{Finord} distinct objects have distinct cardinalities. So $a = b$ and \textbf{Finord} is skeletal.
-            
+    \begin{exercise}
+        \item We wish to show that object isomorphism is an equivalence relation, or that it's reflexive, symmetric, and transitive. Fortunately the exercises from section 3 correspond exactly to these properties.
+        \begin{enumerate}[(i)]
+            \item $a \cong a$ since $1_a$ is iso.
+            \item If $a \cong b$ then some $f : a \to b$ is iso, and therefore $f\inv : b \to a$ is iso and $b \cong a$.
+            \item If $a \cong b$ and $b \cong c$ then we have iso arrows $f : a \to b$ and $g : b \to c$. Then $g \o f$ is iso, and $a \cong c$.
         \end{enumerate}
+    \end{exercise}
 
+    \begin{exercise}
+        \item Suppose $a$ and $b$ are two \textbf{Finord}-objects such that $a \cong b$. Then there is some $f : a \to b$ that is iso.
+        Since \textbf{Finord} is a subcategory of \textbf{Set}, iso arrows correspond to bijective functions.
+        Then $a$ and $b$ must have the same cardinality, but by the definition of \textbf{Finord} distinct objects have distinct cardinalities. So $a = b$ and \textbf{Finord} is skeletal.
+    \end{exercise}
 
 \section{Initial objects}
 
-    \begin{definition}
+    \begin{defi}
         An object $c$ is \emph{initial} if for every $C$-object $a$, there is exactly one arrow $f : c \to a$.
 
         \[\begin{tikzcd}
@@ -196,10 +201,10 @@
             \arrow[from=4-1, to=3-4]
             \arrow[from=4-1, to=2-4]
         \end{tikzcd}\]
-    \end{definition}
+    \end{defi}
 
 \section{Terminal objects}
-    \begin{definition}
+    \begin{defi}
         An object $c$ is \emph{terminal} if for every $C$-object $a$, there is exactly one arrow $f : a \to c$.       
         \[\begin{tikzcd}
             {\bullet} \\
@@ -222,75 +227,77 @@
             \arrow[from=3-2, to=4-4]
             \arrow[from=2-2, to=4-4]
         \end{tikzcd}\]
-    \end{definition}
+    \end{defi}
 
-    \subsection*{Exercises}
-        \begin{enumerate}
-            \item Let $c_1$ and $c_2$ be terminal $C-objects$.
-                \[\begin{tikzcd}
-                    {\bullet} \\
-                    {\bullet} & {\bullet} \\
-                    {\bullet} & {\bullet} && {c_1} \\
-                    {\bullet} & {\bullet} \\
-                    {\bullet} & {\bullet} && {c_2} \\
-                    {\bullet} & {\bullet} \\
-                    {\bullet}
-                    \arrow[from=2-1, to=3-4]
-                    \arrow[from=3-1, to=3-4]
-                    \arrow[from=4-1, to=3-4]
-                    \arrow[from=5-1, to=3-4]
-                    \arrow[from=6-1, to=3-4]
-                    \arrow[from=1-1, to=3-4]
-                    \arrow[from=7-1, to=3-4]
-                    \arrow[from=6-2, to=3-4]
-                    \arrow[from=5-2, to=3-4]
-                    \arrow[from=4-2, to=3-4]
-                    \arrow[from=3-2, to=3-4]
-                    \arrow[from=2-2, to=3-4]
-                    \arrow[from=1-1, to=5-4, curve={height=6pt}]
-                    \arrow[from=2-2, to=5-4]
-                    \arrow[from=2-1, to=5-4]
-                    \arrow[from=3-1, to=5-4]
-                    \arrow[from=3-2, to=5-4]
-                    \arrow[from=4-1, to=5-4]
-                    \arrow[from=4-2, to=5-4]
-                    \arrow[from=5-1, to=5-4]
-                    \arrow[from=5-2, to=5-4]
-                    \arrow[from=6-1, to=5-4]
-                    \arrow[from=6-2, to=5-4]
-                    \arrow[from=7-1, to=5-4]
-                    \arrow[from=3-4, to=5-4, shift left=1]
-                    \arrow[from=5-4, to=3-4, shift left=1]
-                \end{tikzcd}\]
-            By terminality there is a unique arrow $f_1 : c_1 \to c_2$ and a unique arrow $f_2 : c_2 \to c_1$.
-            Then by the category axiom, $f_2 \o f_1 : c_1 \to c_1$ and $f_1 \o f_2 : c_2 \to c_2$ must exist.
-            But again by terminality, there is a unique arrow $1_{c_1} : c_1 \to c_1$ and $1_{c_2} : c_2 \to c_2$, so the composition of $f_1$ and $f_2$ must give the identity.
-            Conclude $c_1 \cong c_2$.
-
-            \item \begin{enumerate} [(i)]
-                \item Terminal objects in \textbf{Set$^2$} are of the form $\langle \set{e_1}, \set{e_2}  \rangle$, or pairs of singleton sets.
-
-                \item Terminal objects in \textbf{Set$^\rightarrow$}
-
-                \item The terminal object in the poset \textbf{$(n, \leq)$} is the maximal element $n$, since $m \leq n$ for every $m$.
-            \end{enumerate}
-
-            \item Suppose $f : 1 \to a$ has its domain $1$ a terminal object, and $g_1, g_2$ are any two parallel arrows from $c \to 1$.
+    \begin{exercise}
+        Let $c_1$ and $c_2$ be terminal $C-objects$.
             \[\begin{tikzcd}
-                {c} & {} & {1} && {a}
-                \arrow["{f}", from=1-3, to=1-5]
-                \arrow["{g_1}", from=1-1, to=1-3, curve={height=-6pt}]
-                \arrow["{g_2}"', from=1-1, to=1-3, curve={height=6pt}]
+                {\bullet} \\
+                {\bullet} & {\bullet} \\
+                {\bullet} & {\bullet} && {c_1} \\
+                {\bullet} & {\bullet} \\
+                {\bullet} & {\bullet} && {c_2} \\
+                {\bullet} & {\bullet} \\
+                {\bullet}
+                \arrow[from=2-1, to=3-4]
+                \arrow[from=3-1, to=3-4]
+                \arrow[from=4-1, to=3-4]
+                \arrow[from=5-1, to=3-4]
+                \arrow[from=6-1, to=3-4]
+                \arrow[from=1-1, to=3-4]
+                \arrow[from=7-1, to=3-4]
+                \arrow[from=6-2, to=3-4]
+                \arrow[from=5-2, to=3-4]
+                \arrow[from=4-2, to=3-4]
+                \arrow[from=3-2, to=3-4]
+                \arrow[from=2-2, to=3-4]
+                \arrow[from=1-1, to=5-4, curve={height=6pt}]
+                \arrow[from=2-2, to=5-4]
+                \arrow[from=2-1, to=5-4]
+                \arrow[from=3-1, to=5-4]
+                \arrow[from=3-2, to=5-4]
+                \arrow[from=4-1, to=5-4]
+                \arrow[from=4-2, to=5-4]
+                \arrow[from=5-1, to=5-4]
+                \arrow[from=5-2, to=5-4]
+                \arrow[from=6-1, to=5-4]
+                \arrow[from=6-2, to=5-4]
+                \arrow[from=7-1, to=5-4]
+                \arrow[from=3-4, to=5-4, shift left=1]
+                \arrow[from=5-4, to=3-4, shift left=1]
             \end{tikzcd}\]
-            Well, since $1$ is terminal the arrow from $c \to 1$ is unique and we see that $g_1 = g_2$,
-            so regardless of whether $g_1 \o f = g_2 \o f$ holds (which it does), we can conclude $f$ is monic.
+        By terminality there is a unique arrow $f_1 : c_1 \to c_2$ and a unique arrow $f_2 : c_2 \to c_1$.
+        Then by the category axiom, $f_2 \o f_1 : c_1 \to c_1$ and $f_1 \o f_2 : c_2 \to c_2$ must exist.
+        But again by terminality, there is a unique arrow $1_{c_1} : c_1 \to c_1$ and $1_{c_2} : c_2 \to c_2$, so the composition of $f_1$ and $f_2$ must give the identity.
+        Conclude $c_1 \cong c_2$.
+    \end{exercise}
+
+    \begin{exercise}
+        \begin{enumerate} [(i)]
+            \item Terminal objects in \textbf{Set$^2$} are of the form $\langle \set{e_1}, \set{e_2}  \rangle$, or pairs of singleton sets.
+
+            \item Terminal objects in \textbf{Set$^\rightarrow$} are arrows with singleton sets as domain and codomain.
+
+            \item The terminal object in the poset \textbf{$(n, \leq)$} is the maximal element $n$, since $m \leq n$ for every $m$.
         \end{enumerate}
+    \end{exercise}
+
+    \begin{exercise} Suppose $f : 1 \to a$ has its domain $1$ a terminal object, and $g_1, g_2$ are any two parallel arrows from $c \to 1$.
+        \[\begin{tikzcd}
+            {c} & {} & {1} && {a}
+            \arrow["{f}", from=1-3, to=1-5]
+            \arrow["{g_1}", from=1-1, to=1-3, curve={height=-6pt}]
+            \arrow["{g_2}"', from=1-1, to=1-3, curve={height=6pt}]
+        \end{tikzcd}\]
+        Well, since $1$ is terminal the arrow from $c \to 1$ is unique and we see that $g_1 = g_2$,
+        so regardless of whether $g_1 \o f = g_2 \o f$ holds (which it does), we can conclude $f$ is monic.
+    \end{exercise}
 
 \section{Duality}
     Any category can be turned into its opposite category. So any statement about a category can be dualized with all the arrows reversed.
 
 \section{Products}
-    \begin{definition}
+    \begin{defi} \label{product}
         Given $C$-objects $a$ and $b$, a \emph{product} is a $C$-object $a\times b$ and 2 $C$-arrows $pr_a, pr_b$.
         \[\begin{tikzcd}
             {a} & {} & {a \times b} && {b}
@@ -321,10 +328,26 @@
         \end{tikzcd}\]
         commutes. This is denoted
         $$c := \langle f, g \rangle.$$
-    \end{definition}
+    \end{defi}
 
-    \begin{fact}
+    \begin{fact} \label{product has one identity}
+        If $c$ is a product $a \times b$, any arrow $f : c \to c$, $f$ must be the identity $1_c$.
+        First observe that the identity must exist. Then plug $c$ into \cref{product} to see that $f$ must be the unique arrow with that domain and codomain.
+        % https://q.uiver.app/?q=WzAsNSxbNCwxLCJiIl0sWzEsMV0sWzAsMSwiYSJdLFsyLDEsImEgXFx0aW1lcyBiIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMywyLCJwcl9hIiwyXSxbMywwLCJwcl9iIl0sWzQsMiwiZiIsMl0sWzQsMCwiZyJdLFszLDQsIjFfe2EgXFx0aW1lcyBifSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            && {c} \\
+            {a} & {} & {c} && {b}
+            \arrow["{pr_a}"', from=2-3, to=2-1]
+            \arrow["{pr_b}", from=2-3, to=2-5]
+            \arrow["{f}"', from=1-3, to=2-1]
+            \arrow["{g}", from=1-3, to=2-5]
+            \arrow["{1_c}"', from=2-3, to=1-3, dashed, tail reversed]
+        \end{tikzcd}\]
+    \end{fact}
+
+    \begin{fact} \label{products are isomorphic}
         Any two products of $a$ and $b$, say $a\times_1 b$ and $a \times_2 b$, are isomorphic to each other. Consider that in the diagram
+        % https://q.uiver.app/?q=WzAsNSxbNCwxLCJiIl0sWzEsMV0sWzAsMSwiYSJdLFsyLDIsImEgXFx0aW1lc18xIGIiXSxbMiwwLCJhIFxcdGltZXNfMiBiIl0sWzMsMiwicHJfYSIsMl0sWzMsMCwicHJfYiJdLFs0LDIsImYiLDJdLFs0LDAsImciXSxbNCwzLCJoXzEiLDIseyJjdXJ2ZSI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNCwiaF8yIiwyLHsiY3VydmUiOjEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
         \[\begin{tikzcd}
             && {a \times_2 b} \\
             {a} & {} &&& {b} \\
@@ -336,7 +359,10 @@
             \arrow["{h_1}"', from=1-3, to=3-3, curve={height=6pt}, dashed]
             \arrow["{h_2}"', from=3-3, to=1-3, curve={height=6pt}, dashed]
         \end{tikzcd}\]
-        $h_1$ and $h_2$ are uniquely determined. But the arrow from a product to itself must also be unique, so the composition of $h_1$ and $h_2$ must give identities (depending on the order).
+        $h_1$ and $h_2$ are uniquely determined by symmetric applications of \cref{product}. But by \cref{product has one identity}, composition of $h_1$ and $h_2$ must give identities.
     \end{fact}
+
+
+    
 
 \end{document}  
