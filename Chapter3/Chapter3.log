@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.12)  21 DEC 2020 22:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.12)  21 DEC 2020 23:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1028,23 +1028,23 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 300.
- [5]
+ [5] [6]
 
 AED: lastpage setting LastPage
-[6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 368.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 368.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 445.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 445.
  (./Chapter3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 368.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 368.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 445.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 445.
 Package rerunfilecheck Info: File `Chapter3.out' has not changed.
 (rerunfilecheck)             Checksum: 21B5632F323B2C39A06C7486CD0F601F;377.
  ) 
 Here is how much of TeX's memory you used:
- 23380 strings out of 481248
- 467947 string characters out of 5922068
+ 23659 strings out of 481248
+ 474975 string characters out of 5922068
  747656 words of memory out of 5000000
- 38145 multiletter control sequences out of 15000+600000
+ 38419 multiletter control sequences out of 15000+600000
  541170 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,16n,94p,849b,1221s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1058,11 +1058,12 @@ ts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
 pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/201
 9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Chapter3.pdf (6 pages, 147552 bytes).
+st/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Chapter3.pdf (7 pages, 161132 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 46 named destinations out of 1000 (max. 500000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

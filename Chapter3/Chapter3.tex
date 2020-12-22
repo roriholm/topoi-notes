@@ -362,6 +362,83 @@
         $h_1$ and $h_2$ are uniquely determined by symmetric applications of \cref{product}. But by \cref{product has one identity}, composition of $h_1$ and $h_2$ must give identities.
     \end{fact}
 
+    \begin{exercise}
+        The fact that $\langle pr_a, pr_b \rangle = 1_{a\times b}$ follows as a special case of \cref{product has one identity}, by plugging in the projection functcions.
+        % https://q.uiver.app/?q=WzAsNSxbNCwxLCJiIl0sWzEsMV0sWzAsMSwiYSJdLFsyLDEsImEgXFx0aW1lcyBiIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMywyLCJwcl9hIiwyXSxbMywwLCJwcl9iIl0sWzQsMiwicHJfYSIsMl0sWzQsMCwicHJfYiJdLFszLDQsIjFfe2EgXFx0aW1lcyBifSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            && {a \times b} \\
+            {a} & {} & {a \times b} && {b}
+            \arrow["{pr_a}"', from=2-3, to=2-1]
+            \arrow["{pr_b}", from=2-3, to=2-5]
+            \arrow["{pr_a}"', from=1-3, to=2-1]
+            \arrow["{pr_b}", from=1-3, to=2-5]
+            \arrow["{1_{a \times b}}"', from=2-3, to=1-3, dashed, tail reversed]
+        \end{tikzcd}\]
+    \end{exercise}
+
+    \begin{exercise}
+        Suppose we have parallel $f,k : c \too a$ and $g, h : c \too b$ and $p : c \to a \times b$ such that 
+        $p = \langle f, g \rangle = \langle k, h \rangle$.
+        Then $f = pr_a \circ p$ and $k = pr_a \circ p$. It doesn't take any special cancellation rules to see that identically $f = k$. Similarly $g=h$.
+        % https://q.uiver.app/?q=WzAsNSxbNCwyLCJiIl0sWzEsMl0sWzAsMiwiYSJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsMCwiYyJdLFszLDIsInByX2EiLDJdLFszLDAsInByX2IiXSxbNCwyLCJmIiwyLHsiY3VydmUiOjJ9XSxbNCwwLCJnIiwwLHsiY3VydmUiOi0yfV0sWzQsMywicCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDIsImsiXSxbNCwwLCJoIiwyXV0=
+        \[\begin{tikzcd}
+            && {c} \\
+            \\
+            {a} & {} & {a \times b} && {b}
+            \arrow["{pr_a}"', from=3-3, to=3-1]
+            \arrow["{pr_b}", from=3-3, to=3-5]
+            \arrow["{f}"', from=1-3, to=3-1, curve={height=12pt}]
+            \arrow["{g}", from=1-3, to=3-5, curve={height=-12pt}]
+            \arrow["{p}", from=1-3, to=3-3, dashed]
+            \arrow["{k}", from=1-3, to=3-1]
+            \arrow["{h}"', from=1-3, to=3-5]
+        \end{tikzcd}\]
+    \end{exercise}
+
+    \begin{exercise}
+        Suppose the situation is as follows.
+        % https://q.uiver.app/?q=WzAsNixbNCw0LCJiIl0sWzEsNF0sWzAsNCwiYSJdLFsyLDQsImEgXFx0aW1lcyBiIl0sWzIsMiwiYyJdLFsyLDAsImQiXSxbMywyLCJwcl9hIiwyXSxbMywwLCJwcl9iIl0sWzQsMiwiZiIsMix7ImN1cnZlIjoyfV0sWzQsMCwiZyIsMCx7ImN1cnZlIjotMn1dLFs0LDMsIlxcbGFuZ2xlIGYsIGcgXFxyYW5nbGUiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw0LCJoIiwyXV0=
+        \[\begin{tikzcd}
+            && {d} \\
+            \\
+            && {c} \\
+            \\
+            {a} & {} & {a \times b} && {b}
+            \arrow["{pr_a}"', from=5-3, to=5-1]
+            \arrow["{pr_b}", from=5-3, to=5-5]
+            \arrow["{f}"', from=3-3, to=5-1, curve={height=12pt}]
+            \arrow["{g}", from=3-3, to=5-5, curve={height=-12pt}]
+            \arrow["{\langle f, g \rangle}", from=3-3, to=5-3, dashed]
+            \arrow["{h}"', from=1-3, to=3-3]
+        \end{tikzcd}\]
+        Then by compositionality there must exist $h \circ f : d \to a$ and $g \circ f : d \to b$.
+        There also must exist $h \circ \langle f, g \rangle : d \to a \times b$.
+        By collapsing the diagram to 
+        % https://q.uiver.app/?q=WzAsNSxbNCwyLCJiIl0sWzEsMl0sWzAsMiwiYSJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsMCwiZCJdLFszLDIsInByX2EiLDJdLFszLDAsInByX2IiXSxbNCwyLCJmIFxcY2lyYyBoIiwyLHsiY3VydmUiOjJ9XSxbNCwwLCJnIFxcY2lyYyBoIiwwLHsiY3VydmUiOi0yfV0sWzQsMywiXFxsYW5nbGUgZiBcXGNpcmMgaCwgZyBcXGNpcmMgaCBcXHJhbmdsZSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            && {d} \\
+            \\
+            {a} & {} & {a \times b} && {b}
+            \arrow["{pr_a}"', from=3-3, to=3-1]
+            \arrow["{pr_b}", from=3-3, to=3-5]
+            \arrow["{f \circ h}"', from=1-3, to=3-1, curve={height=12pt}]
+            \arrow["{g \circ h}", from=1-3, to=3-5, curve={height=-12pt}]
+            \arrow["{\langle f \circ h, g \circ h \rangle}", from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        we see the arrow from $ d \to a \times b$ must be unique, and therefore
+        $$\langle f\circ h, g\circ h \rangle = h \circ \langle f, g \rangle.$$
+    \end{exercise}
+
+    \begin{exercise}
+        Suppose a category $C$ has a terminal object $1$, and products. Let $a$ be a $C$-object and consider the product $a \times 1$.
+        % https://q.uiver.app/?q=WzAsNCxbNCwwLCIxIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImEgXFx0aW1lcyAxIl0sWzMsMiwicHJfYSIsMl0sWzMsMCwiISJdXQ==
+        \[\begin{tikzcd}
+            {a} & {} & {a \times 1} && {1}
+            \arrow["{pr_a}"', from=1-3, to=1-1]
+            \arrow["{pr_1}", from=1-3, to=1-5]
+        \end{tikzcd}\]
+    \end{exercise}
+
 
     
 
