@@ -570,6 +570,9 @@
     \end{exercise}
 
     \begin{exercise}
+        In this exercise we wish to show that products are associative up to isomorphism.
+        So given $C$-objects $a, b, c$, form the products $(a \times b) \times c$ and $a \times (b \times c)$.
+        Here they are with the relevant projection arrows:
         % https://q.uiver.app/?q=WzAsOCxbMSw3XSxbMSwwLCIoYSBcXHRpbWVzIGIpIl0sWzMsMCwiKGJcXHRpbWVzIGMpIl0sWzAsMSwiYSJdLFsyLDAsImIiXSxbNCwxLCJjIl0sWzMsMiwiYSBcXHRpbWVzIChiXFx0aW1lcyBjKSJdLFsxLDIsIihhIFxcdGltZXMgYikgXFx0aW1lcyBjIl0sWzEsM10sWzEsNF0sWzIsNF0sWzIsNV0sWzYsMl0sWzYsM10sWzcsMV0sWzcsNV1d
         \[\begin{tikzcd}
             & {(a \times b)} & {b} & {(b\times c)} \\
@@ -589,6 +592,45 @@
             \arrow[from=3-2, to=1-2]
             \arrow[from=3-2, to=2-5]
         \end{tikzcd}\]
+        We'll use the product definition side-by-side, noting that composition of projections gives us our arrows $a \times (b\times c) \to b$ and $(a\times b) \times c \to b$:
+        % https://q.uiver.app/?q=WzAsOCxbMCwwXSxbMSwxLCJhIFxcdGltZXMgKGIgXFx0aW1lcyBjKSJdLFsxLDMsImEgXFx0aW1lcyBiIl0sWzAsMywiYSJdLFsyLDMsImIiXSxbMywxLCIoYSBcXHRpbWVzIGIpIFxcdGltZXMgYyJdLFs0LDMsImMiXSxbMywzLCJiXFx0aW1lcyBjIl0sWzEsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsM10sWzIsNF0sWzEsM10sWzEsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzUsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiYmFycmVkIn19fV0sWzUsNl0sWzUsNywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNF0sWzcsNl1d
+        \[\begin{tikzcd}
+            {} \\
+            & {a \times (b \times c)} && {(a \times b) \times c} \\
+            \\
+            {a} & {a \times b} & {b} & {b\times c} & {c}
+            \arrow[from=2-2, to=4-2, dashed]
+            \arrow[from=4-2, to=4-1]
+            \arrow[from=4-2, to=4-3]
+            \arrow[from=2-2, to=4-1]
+            \arrow["\shortmid" marking, from=2-2, to=4-3]
+            \arrow["\shortmid" marking, from=2-4, to=4-3]
+            \arrow[from=2-4, to=4-5]
+            \arrow[from=2-4, to=4-4, dashed]
+            \arrow[from=4-4, to=4-3]
+            \arrow[from=4-4, to=4-5]
+        \end{tikzcd}\]
+        The definition yields unique arrows 
+        $a \times (b\times c) \to b \times c$ and
+        $(a\times b) \times c  \to a \times b$.
+        Using these arrows along-side the `first-order' projection arrows, we use the product definition again to find the unique arrows
+        % https://q.uiver.app/?q=WzAsNSxbMSwwXSxbMiwzLCJhIFxcdGltZXMgKGIgXFx0aW1lcyBjKSJdLFswLDQsImEgXFx0aW1lcyBiIl0sWzIsNSwiKGEgXFx0aW1lcyBiKSBcXHRpbWVzIGMiXSxbNCw0LCJiXFx0aW1lcyBjIl0sWzEsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMl0sWzEsNF0sWzEsMywiIiwxLHsiY3VydmUiOi0yLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywxLCIiLDEseyJjdXJ2ZSI6LTIsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            & {} \\
+            \\
+            \\
+            && {a \times (b \times c)} \\
+            {a \times b} &&&& {b\times c} \\
+            && {(a \times b) \times c}
+            \arrow[from=4-3, to=5-1, dashed]
+            \arrow[from=6-3, to=5-5, dashed]
+            \arrow[from=6-3, to=5-1]
+            \arrow[from=4-3, to=5-5]
+            \arrow[from=4-3, to=6-3, curve={height=-12pt}, dashed]
+            \arrow[from=6-3, to=4-3, curve={height=-12pt}, dashed]
+        \end{tikzcd}\]
+        Using \cref{product has one identity} gives that $(a \times b) \times c \cong a \times (b \times c)$.
+
     \end{exercise}
 
     \begin{exercise}
@@ -795,4 +837,254 @@
         in the general product definiton of $b_1 \times b_2 \times \ldots \times b_m$.
     \end{defi}
 
+\section{Co-products}
+
+    \begin{defi}
+        A \emph{co-product} of $C$-objects $a$ and $b$ is given by a a $C$-object denoted $a+b$, and injection functions $i_a$ and $i_b$.
+        % https://q.uiver.app/?q=WzAsNCxbNCwwLCJiIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImErYiJdLFsyLDMsImlfYSIsMl0sWzAsMywiaV9iIl1d
+        \[\begin{tikzcd}
+            {a} & {} & {a+b} && {b}
+            \arrow["{i_a}"', from=1-1, to=1-3]
+            \arrow["{i_b}", from=1-5, to=1-3]
+        \end{tikzcd}\]
+
+        For any $f : a \to c$ and $g : b \to c$, there is a unique arrow
+        $[f,g] : (a + b) \to c$ so that
+        % https://q.uiver.app/?q=WzAsNSxbNCwwLCJiIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImErYiJdLFsyLDIsImMiXSxbMiwzLCJpX2EiLDJdLFswLDMsImlfYiJdLFsyLDQsImYiLDJdLFswLDQsImciXSxbMyw0LCJbZixnXSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            {a} & {} & {a+b} && {b} \\
+            \\
+            && {c}
+            \arrow["{i_a}"', from=1-1, to=1-3]
+            \arrow["{i_b}", from=1-5, to=1-3]
+            \arrow["{f}"', from=1-1, to=3-3]
+            \arrow["{g}", from=1-5, to=3-3]
+            \arrow["{[f,g]}" description, from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        commutes.
+    \end{defi}
+
+    \begin{exercise}
+        In \textbf{Set} we are told that the co-product $A+B$ is the disjoint union, with $i_A$ and $i_B$ being the disjoint identity function (Ie, $i_A(x) = (x, 0)$ for $x \in A$, and $i_B(x) = (x, 1)$ for $x \in B$.
+        Now suppose we have functions $f : A \to C$ and $g : B \to C$.
+        % https://q.uiver.app/?q=WzAsNSxbNCwwLCJCIl0sWzEsMF0sWzAsMCwiQSJdLFsyLDAsImErYiJdLFsyLDIsIkMiXSxbMiwzLCJpX0EiLDJdLFswLDMsImlfQiJdLFsyLDQsImYiLDJdLFswLDQsImciXSxbMyw0LCJbZixnXSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            {A} & {} & {A+B} && {B} \\
+            \\
+            && {C}
+            \arrow["{i_A}"', from=1-1, to=1-3]
+            \arrow["{i_B}", from=1-5, to=1-3]
+            \arrow["{f}"', from=1-1, to=3-3]
+            \arrow["{g}", from=1-5, to=3-3]
+            \arrow["{[f,g]}" description, from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        We can find $[f,g] : A + B \to C$ making this diagram commute by using the rule
+            \[ [f,g](\langle x, y \rangle ) =\begin{cases} 
+                  f(x) & y = 0 \\
+                  g(x) & y = 1. 
+               \end{cases}
+            \]
+        To see that it $[f,g]$ is unique, notice that as given, $[f,g] \o i_A = f$ iff $[f,g](i_A(x)) = f(x)$ for all $x \in A$. Similarly on the $B$ side - there is no other way to recover the action of $f$ and $g$ out of $A+B$.
+    \end{exercise}
+
+    \begin{exercise}
+        If $A \cup B = \emptyset$ then we notice that $A\cup B$ satisfies the definition of co-product
+        % https://q.uiver.app/?q=WzAsNSxbNCwwLCJCIl0sWzEsMF0sWzAsMCwiQSJdLFsyLDAsIkFcXGN1cCBCIl0sWzIsMiwiQyJdLFsyLDMsImlfQSIsMl0sWzAsMywiaV9CIl0sWzIsNCwiZiIsMl0sWzAsNCwiZyJdLFszLDQsIltmLGddIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        \[\begin{tikzcd}
+            {A} & {} & {A\cup B} && {B} \\
+            \\
+            && {C}
+            \arrow["{i_A}"', from=1-1, to=1-3]
+            \arrow["{i_B}", from=1-5, to=1-3]
+            \arrow["{f}"', from=1-1, to=3-3]
+            \arrow["{g}", from=1-5, to=3-3]
+            \arrow["{[f,g]}" description, from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        where $i_A$ and $i_B$ are the inclusion functions, and 
+            \[ [f,g]=\begin{cases} 
+                  f(x) & x \in A \\
+                  g(x) & x \in B,
+               \end{cases}
+            \]
+        which is well defined because any $x$ is in either $A$ or $B$ but not both.
+        Then applying the dual of \cref{products are isomorphic}, co-products are isomorphic and therefore $A \cup B \cong A + B$.
+    \end{exercise}
+
+    \begin{defi}
+        Given two co-products $a + b$ and $c + d$, and arrows $f : a \to c$ and $g : b \to d$ 
+        % https://q.uiver.app/?q=WzAsNyxbNCwwLCJiIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImEgKyBiIl0sWzIsMiwiYyArIGQiXSxbMCwyLCJjIl0sWzQsMiwiZCJdLFsyLDMsImlfYSIsMl0sWzAsMywiaV9iIl0sWzYsNCwiaV9kIl0sWzUsNCwiaV9jIiwyXSxbMiw1LCJmIiwxXSxbMCw2LCJnIiwxXV0=
+        \[\begin{tikzcd}
+            {a} & {} & {a + b} && {b} \\
+            \\
+            {c} && {c + d} && {d}
+            \arrow["{i_a}"', from=1-1, to=1-3]
+            \arrow["{i_b}", from=1-5, to=1-3]
+            \arrow["{i_d}", from=3-5, to=3-3]
+            \arrow["{i_c}"', from=3-1, to=3-3]
+            \arrow["{f}" description, from=1-1, to=3-1]
+            \arrow["{g}" description, from=1-5, to=3-5]
+        \end{tikzcd}\]
+        the \emph{co-product arrow} $f + g$ is found by using $[i_c \o f, i_d \o g]$ in the co-product definition of $c+d$.
+        % https://q.uiver.app/?q=WzAsNyxbNCwwLCJiIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImEgKyBiIl0sWzIsMiwiYyArIGQiXSxbMCwyLCJjIl0sWzQsMiwiZCJdLFsyLDMsImlfYSIsMl0sWzAsMywiaV9iIl0sWzYsNCwiaV9kIl0sWzUsNCwiaV9jIiwyXSxbMiw1LCJmIiwxXSxbMCw2LCJnIiwxXSxbMyw0LCJmK2ciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            {a} & {} & {a + b} && {b} \\
+            \\
+            {c} && {c + d} && {d}
+            \arrow["{i_a}"', from=1-1, to=1-3]
+            \arrow["{i_b}", from=1-5, to=1-3]
+            \arrow["{i_d}", from=3-5, to=3-3]
+            \arrow["{i_c}"', from=3-1, to=3-3]
+            \arrow["{f}" description, from=1-1, to=3-1]
+            \arrow["{g}" description, from=1-5, to=3-5]
+            \arrow["{f+g}" description, from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+    \end{defi}
+
+\section{Equalizers}
+
+    \begin{defi}
+        An arrow $i$ \emph{equalizes} $f$ and $g$ if they are laid out as follows
+        % https://q.uiver.app/?q=WzAsNCxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMSwyLCJmIl0sWzEsMiwiZyIsMix7Im9mZnNldCI6MX1dLFszLDEsImkiLDJdXQ==
+        \[\begin{tikzcd}
+            & {} \\
+            {e} && {a} && {b}
+            \arrow["{f}", from=2-3, to=2-5]
+            \arrow["{g}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i}"', from=2-1, to=2-3]
+        \end{tikzcd}\]
+        where $f \o i = g \o i$. Additionaly we demand the limiting property: if another $e^*$ and $i^*$ work as above, there is a unique arrow $e^* \to e$ making
+        % https://q.uiver.app/?q=WzAsNSxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMCwzLCJlXioiXSxbMSwyLCJmIl0sWzEsMiwiZyIsMix7Im9mZnNldCI6MX1dLFszLDEsImkiLDJdLFs0LDEsImleKiIsMl0sWzQsMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        \[\begin{tikzcd}
+            & {} \\
+            {e} && {a} && {b} \\
+            \\
+            {e^*}
+            \arrow["{f}", from=2-3, to=2-5]
+            \arrow["{g}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i}"', from=2-1, to=2-3]
+            \arrow["{i^*}"', from=4-1, to=2-3]
+            \arrow[from=4-1, to=2-1, dashed]
+        \end{tikzcd}\] 
+        commute.
+    \end{defi}
+
+    \begin{fact}
+        Every equalizer is monic.
+    \end{fact}
+
+    \begin{fact}
+        An epic equalizer is iso.
+        % https://q.uiver.app/?q=WzAsNSxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMCwzLCJhIl0sWzEsMiwiZiJdLFsxLDIsImciLDIseyJvZmZzZXQiOjF9XSxbMywxLCJpIiwyXSxbNCwxLCIxX2EiLDJdLFs0LDMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            & {} \\
+            {e} && {a} && {b} \\
+            \\
+            {a}
+            \arrow["{f}", from=2-3, to=2-5]
+            \arrow["{g}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i}"', from=2-1, to=2-3]
+            \arrow["{1_a}"', from=4-1, to=2-3]
+            \arrow[from=4-1, to=2-1, dashed]
+        \end{tikzcd}\]
+    \end{fact}
+
+    \begin{exercise}
+        Working in \textbf{Set}, we wish to show that monics are equalizers.
+        Suppose we have some injective function $i : E \to A$:
+        % https://q.uiver.app/?q=WzAsMyxbMSwwXSxbMiwxLCJBIl0sWzAsMSwiRSJdLFsyLDEsImkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV1d
+        \[\begin{tikzcd}
+            & {} \\
+            {E} && {A}
+            \arrow["{i}", from=2-1, to=2-3, tail]
+        \end{tikzcd}\]
+        We seek functions which $i$ is an equalizer.
+        Let $f, g : A \too \set{0,1}$ be given by
+        $$f(x)  = 1$$
+        \[ g(x)=\begin{cases} 
+              1 & x \in i(E) \\
+              0 & x \notin i(E). 
+           \end{cases}
+        \]
+        Now clearly $g(i(x)) = f(i(x))$ for all $x \in E$, so $i \o f = i \o g$.
+        Supposing that there is another $i^* : C \to A$ such that $i^* \o f = i^* \o g$.
+        We must have ...?
+        % https://q.uiver.app/?q=WzAsNSxbMSwwXSxbMiwxLCJBIl0sWzAsMSwiRSJdLFs0LDEsIlxcezAsMVxcfSJdLFswLDMsIkMiXSxbMiwxLCJpIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDMsImciXSxbMSwzLCJmIiwyLHsib2Zmc2V0IjoxfV0sWzQsMSwiaV4qIiwyXSxbNCwyLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            & {} \\
+            {E} && {A} && {\{0,1\}} \\
+            \\
+            {C}
+            \arrow["{i}", from=2-1, to=2-3, tail]
+            \arrow["{g}", from=2-3, to=2-5]
+            \arrow["{f}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i^*}"', from=4-1, to=2-3]
+            \arrow[from=4-1, to=2-1, dashed]
+        \end{tikzcd}\]
+    \end{exercise}
+
+    \begin{exercise}
+        Working in a poset, suppose that $i$ equalizes $f$ and $g$. Recall that any 2 parallel arrows are equal. Then in particular $f \o i = g \o i$ as follows:
+        % https://q.uiver.app/?q=WzAsNCxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMSwyLCJmIl0sWzEsMiwiZyIsMix7Im9mZnNldCI6MX1dLFszLDEsImkiLDJdXQ==
+        \[\begin{tikzcd}
+            & {} \\
+            {e} && {a} && {b}
+            \arrow["{f}", from=2-3, to=2-5]
+            \arrow["{g}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i}"', from=2-1, to=2-3]
+        \end{tikzcd}\]
+        But plugging $a$ and $1_a$ into the definition for equalizer, since $f \o 1_a = f = g = g \o 1_a$ we retrieve the unique arrow
+        $a \to e$.
+        % https://q.uiver.app/?q=WzAsNSxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMCwzLCJhIl0sWzEsMiwiZiJdLFsxLDIsImciLDIseyJvZmZzZXQiOjF9XSxbMywxLCJpIiwyXSxbNCwzLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCwxLCIxX2EiLDJdXQ==
+        \[\begin{tikzcd}
+            & {} \\
+            {e} && {a} && {b} \\
+            \\
+            {a}
+            \arrow["{f}", from=2-3, to=2-5]
+            \arrow["{g}"', from=2-3, to=2-5, shift right=1]
+            \arrow["{i}"', from=2-1, to=2-3]
+            \arrow[from=4-1, to=2-1, dashed]
+            \arrow["{1_a}"', from=4-1, to=2-3]
+        \end{tikzcd}\]
+        Since we have arrows $a \to e$ and $e \to a$ we simply apply the antisymmetric property of posets to determine $e = a$, and the single-arrow property to determine that $i = 1_a$.
+
+        
+    \end{exercise}
+
+\section{Limits and co-limits}
+
+    \begin{defi}
+        A \emph{diagram}...
+    \end{defi}
+
+    \begin{defi}
+        Given a diagram $D$, a a \emph{D-cone} consists of a $C$-object $c$ together with component arrows $f_i : c_i \to d_i$ for each $d_i \in d$ that commute with any arrow $g$ in $D$.
+        % https://q.uiver.app/?q=WzAsNCxbMSwwXSxbMCwzLCJkX2kiXSxbMiwzLCJkX2oiXSxbMSwxLCJjIl0sWzEsMl0sWzMsMSwiZl9pIiwyXSxbMywyLCJmX2oiXV0=
+        \[\begin{tikzcd}
+            & {} \\
+            & {c} \\
+            \\
+            {d_i} && {d_j}
+            \arrow[from=4-1, to=4-3]
+            \arrow["{f_i}"', from=2-2, to=4-1]
+            \arrow["{f_j}", from=2-2, to=4-3]
+        \end{tikzcd}\]
+    \end{defi}
+
+    \begin{defi}
+        Given a diagram $D$, a \emph{limit} for $D$ is a $D$-cone such that any other $D$-cone factors through uniquely.
+        % https://q.uiver.app/?q=WzAsNSxbMiwwXSxbMSwzLCJkX2kiXSxbMywzLCJkX2oiXSxbMCwxLCJjIl0sWzQsMSwiYyciXSxbMSwyXSxbMywxLCJmX2kiLDJdLFszLDIsImZfaiJdLFs0LDEsImZfaSciLDJdLFs0LDIsImZfaiciLDJdLFs0LDMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            && {} \\
+            {c} &&&& {c'} \\
+            \\
+            & {d_i} && {d_j}
+            \arrow[from=4-2, to=4-4]
+            \arrow["{f_i}"', from=2-1, to=4-2]
+            \arrow["{f_j}", from=2-1, to=4-4]
+            \arrow["{f_i'}"', from=2-5, to=4-2]
+            \arrow["{f_j'}"', from=2-5, to=4-4]
+            \arrow[from=2-5, to=2-1, dashed]
+        \end{tikzcd}\]
+    \end{defi}
 \end{document}  
