@@ -1,11 +1,32 @@
-\documentclass[12pt]{letter}
+\documentclass[12pt]{article}
 \usepackage{../common}
 \begin{document}
 
 \chapter{1}{Mathematics = Set Theory?}
 
-NBG and ZF are two different axioms for set theory. They both avoid Russell's paradox in different ways.
+\section{Where Set Theory Cracks}
 
+If it starts to feel like you're working with a system that's \emph{too} powerful, try this: turn the system on itself.
+
+Maybe you'll feed the system to itself, as in the proof of the undecidability of the Halting Problem. 
+Maybe you'll reduce its power to a handful of (say) 3 properties and show that any 2 precludes the possiblity of the 3rd:
+\begin{itemize}
+  \item the CAP theorems for distributed databases
+  \item Kleinberg's impossibility theorem on clustering algorithms
+  \item Arrow's impossibility theorem on social choice
+\end{itemize}
+
+In this case we simply hold up the mirror to the system. If we can ask for the set of all sets, we can quickly reach a dead end in the form of Russell's paradox.
+
+We have two different trap doors that let us squeeze tighter and keep moving forward.
+
+Zermelo–Fraenkel set theory tightens the standard on set comprehensions. And it makes sense. It's hard to imagine what the first line of `bad' Python would do:
+\begin{verbatim}
+    bad_set = {a if p(a)}
+    good_set = {b for b in source_set if p(b)}
+\end{verbatim}
+
+The von Neumann–Bernays–Gödel (NBG) adds to ZF an abstract notion of `class' allowing us to talk about the `class of all sets'. 
 Both provide a strong foundation for modern math, but category theory has emerged as a more abstract foundation.
 
 \end{document}

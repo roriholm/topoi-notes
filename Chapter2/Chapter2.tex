@@ -4,81 +4,199 @@
 
 \chapter{2}{What Categories Are}
 
+\section{Functions as Sets}
+    Given a function $f: A \to B$ we can derive some related sets.
+    \begin{defi}
+        The \emph{relation}
+        $$\hat{f} := \set{ \langle a, f(a) \rangle \st a \in A}.$$ 
+    \end{defi}
+    \begin{defi}
+        The \emph{image set} 
+        $$f(A) := \set{b \in B \st  b = f(a) \text{ for some } a \in A}.$$ 
+        Equivalently
+        $$f(A) := \set{b \st \langle a, b \rangle \in \hat{f} \text { for some } a \in A}.$$
+    \end{defi}
+
+\section{Composition}
+
+    The power of composition is that it can't be resisted.
+    Say I hand you an $f : A \to B$ and a $G : B \to C$. 
+    Then there is a clear procedure for getting from $A$ to $C$.
+    \begin{enumerate}[(1)]
+        \item Take your $a \in A$.
+        \item Apply $f$ to $a$, yielding $f(a)$ which is some $b \in B$.
+        \item Apply $g$ to $b$, yielding $g(b)$, which is some $c \in C$
+    \end{enumerate}
+    This procedure yields the
+    \begin{defi}
+        \emph{Function composition}
+        $$g\circ f.$$
+    \end{defi}
+
+    \begin{fact}
+        Functions are associative, or
+        $$(f \o g) \o h = f \o (g \o h).$$
+    \end{fact}
+    \begin{exercise}
+        Convince yourself that functions are associative.
+    \end{exercise}
+
+    \subsection{Identities}
+    Given any set $B$ there is an important function that comes for free. We call it $1_B : B \to B$ and it's given by
+    $$1_B(b) = b$$
+    for any $b \in B$.
+
+    \begin{fact}
+        Identities are absorbed left and right. In other words, if we have $f : A \to B$ and a $G : B \to C$, then
+        $$1_B \o f = f$$
+        and
+        $$g \o 1_B = g.$$
+        That gives us our first commutative diagram, for which any path is equivalent:
+        % https://q.uiver.app/?q=WzAsNCxbMCwxLCJBIl0sWzIsMiwiQiJdLFsyLDAsIkIiXSxbNCwxLCJDIl0sWzAsMiwiZiJdLFswLDEsImYiLDJdLFsxLDMsImciLDJdLFsyLDMsImciXSxbMiwxLCIxX0IiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+        \[\begin{tikzcd}
+            && {B} \\
+            {A} &&&& {C} \\
+            && {B}
+            \arrow["{f}", from=2-1, to=1-3]
+            \arrow["{f}"', from=2-1, to=3-3]
+            \arrow["{g}"', from=3-3, to=2-5]
+            \arrow["{g}", from=1-3, to=2-5]
+            \arrow["{1_B}" description, from=1-3, to=3-3, tail reversed]
+        \end{tikzcd}\]
+    \end{fact}
+
+\section{Category Axioms}
+    We are ready for the abstract view of the above.
+
+    \begin{defi}
+        A \emph{category} has 
+        \begin{enumerate}
+            \item a collection of objects:
+            $$a,b,c.$$
+            \item a collection of arrows, each with specific domain and codomain:
+            $$f : a \to b,$$
+            $$g : b \to c.$$
+            \item an associative composition operation that yields a unique arrow `skipping' aligned domains and codomains:
+            $$g\o f : a \to c.$$
+            \item an identity arrow for each object:
+            $$f \circ 1_A = f$$
+            $$1_B \circ f = f$$
+            $$g \circ 1_B = g$$
+            $$1_C \circ g = g$$
+        \end{enumerate}
+    \end{defi}
+
+    \begin{fact}
+        Diagrams are a convenient way to present categories:
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwxLCJmIiwyXSxbMSwyLCJnIiwyXV0=
+        \[\begin{tikzcd}
+            {A} && {B} && {C}
+            \arrow["{f}"', from=1-1, to=1-3]
+            \arrow["{g}"', from=1-3, to=1-5]
+        \end{tikzcd}\]
+        But you must keep in mind there are some implicit things not being shown here. The above is a compact verion of the following:
+        % https://q.uiver.app/?q=WzAsNixbMCwyLCJBIl0sWzIsMiwiQiJdLFs0LDIsIkMiXSxbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwxLCJmIiwyXSxbMSwyLCJnIiwyXSxbMyw0LCJmIiwyXSxbNCw1LCJnIiwyXSxbMywwLCIxX0EiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbNCwxLCIxX0IiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbNSwyLCIxX0MiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMCwyLCJnIFxcbyBmIiwxLHsiY3VydmUiOjN9XSxbMyw1LCJnIFxcbyBmIiwxLHsiY3VydmUiOi0zfV1d
+        \[\begin{tikzcd}
+            {A} && {B} && {C} \\
+            \\
+            {A} && {B} && {C}
+            \arrow["{f}"', from=3-1, to=3-3]
+            \arrow["{g}"', from=3-3, to=3-5]
+            \arrow["{f}"', from=1-1, to=1-3]
+            \arrow["{g}"', from=1-3, to=1-5]
+            \arrow["{1_A}" description, from=1-1, to=3-1, tail reversed]
+            \arrow["{1_B}" description, from=1-3, to=3-3, tail reversed]
+            \arrow["{1_C}" description, from=1-5, to=3-5, tail reversed]
+            \arrow["{g \o f}" description, from=3-1, to=3-5, curve={height=18pt}]
+            \arrow["{g \o f}" description, from=1-1, to=1-5, curve={height=-18pt}]
+        \end{tikzcd}\]
+    \end{fact}
+
+    \begin{fact}
+        Saying a diagram `commutes' is a convenient way to present equivalent compositions of arrows. For example, if 
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIkMiXSxbMCwxLCJmIiwyXSxbMSwyLCJnIiwyXSxbMCwyLCJoIiwwLHsiY3VydmUiOi0yfV1d
+        \[\begin{tikzcd}
+            {A} && {B} && {C}
+            \arrow["{f}"', from=1-1, to=1-3]
+            \arrow["{g}"', from=1-3, to=1-5]
+            \arrow["{h}", from=1-1, to=1-5, curve={height=-12pt}]
+        \end{tikzcd}\]
+        commutes then we are saying that 
+        $$g \o f = h.$$
+    \end{fact}
+\section{Comma Categories}
+
+    \begin{defi}
+        The comma-category $C\downarrow a$ is formed from any category $C$ and any $C$-object $a$.
+        Its objects are all the $C$-arrows with codomain $a$. (IE, $f_1: c_1 \to a$ and $f_2: c_2 \to a$).
+        Its arrows are all $C$-arrows between the objects' domains, that commute with the `object arrows'.
+        (IE, $g : c_1 \to c_2$ so that $f_1 = f_2 \circ g$).
+        So $C \downarrow a$ looks like this:
+        \[\begin{tikzcd}
+            {f_1} && {f_2}
+            \arrow["{g}", from=1-1, to=1-3]
+        \end{tikzcd}\]
+        and indicates that this diagram commutes in the original category:
+        \[\begin{tikzcd}
+            {c_1} && {c_2} \\
+            \\
+            & {a}
+            \arrow["{f_1}"', from=1-1, to=3-2]
+            \arrow["{f_2}", from=1-3, to=3-2]
+            \arrow["{g}", from=1-1, to=1-3]
+        \end{tikzcd}\]
+
+        (TODO: Verify category axioms)
+    \end{defi}
+
+    \begin{example}
+        Take $C$ to be the preorder on natural numbers, and $a$ to be a given number.
+        For example, let $a = 3$.
+
+        \[\begin{tikzcd}
+            {1} & {2} & {\textbf{3}} & {4} & {5} & {\ldots}
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=1-5, to=1-6]
+        \end{tikzcd}\]
+
+        Objects in $C \downarrow 3$ are statements of `$n \leq 4$' relationships.
+        Arrows in $C \downarrow 3$ from `$m \leq 3$' to `$n\leq 3$' are `$m\leq n$'.
+
+        \[\begin{tikzcd}
+            {(1 \leq 3)} && {(2 \leq 3)} && {(3 \leq 3)}
+            \arrow["{1 \leq 2}"', from=1-1, to=1-3]
+            \arrow["{1 \leq 3}", from=1-1, to=1-5, curve={height=-18pt}]
+            \arrow["{2 \leq 3}"', from=1-3, to=1-5]
+        \end{tikzcd}\]
+    \end{example}
 
 
-\begin{definition}
-The comma-category $C\downarrow a$ is formed from any category $C$ and any $C$-object $a$.
-Its objects are all the $C$-arrows with codomain $a$. (IE, $f_1: c_1 \to a$ and $f_2: c_2 \to a$).
-Its arrows are all $C$-arrows between the objects' domains, that commute with the `object arrows'.
-(IE, $g : c_1 \to c_2$ so that $f_1 = f_2 \circ g$).
-So $C \downarrow a$ looks like this:
-\[\begin{tikzcd}
-    {f_1} && {f_2}
-    \arrow["{g}", from=1-1, to=1-3]
-\end{tikzcd}\]
-and indicates that this diagram commutes in the original category:
-\[\begin{tikzcd}
-    {c_1} && {c_2} \\
-    \\
-    & {a}
-    \arrow["{f_1}"', from=1-1, to=3-2]
-    \arrow["{f_2}", from=1-3, to=3-2]
-    \arrow["{g}", from=1-1, to=1-3]
-\end{tikzcd}\]
+    \begin{example}
+        Recall $\textbf{Matr(k)}$ has the natural numbers $\N$ as objects, and $(n\times m)$ matrices as arrows from $m \to n$.
 
-(TODO: Verify category axioms)
-\end{definition}
+        Then $\textbf{Matr(k)} \downarrow 3$ has as objects all $3\times n$ matrices where $n \in \N$.
 
-\begin{example}
-Take $C$ to be the preorder on natural numbers, and $a$ to be a given number.
-For example, let $a = 3$.
+        Then if object $A$ is a $3\times m$ matrix, and object $B$ is a $3\times n$ matrix,
+        then an arrow $C : A \to B$ is an $n \times m$ matrix such that $A=BC$.
 
-\[\begin{tikzcd}
-    {1} & {2} & {\textbf{3}} & {4} & {5} & {\ldots}
-    \arrow[from=1-1, to=1-2]
-    \arrow[from=1-2, to=1-3]
-    \arrow[from=1-3, to=1-4]
-    \arrow[from=1-4, to=1-5]
-    \arrow[from=1-5, to=1-6]
-\end{tikzcd}\]
+        Thus the situation in $\textbf{Matr(k)} \downarrow 3$ is
+        \[\begin{tikzcd}
+            {A_{3\times m}} && {B_{3\times n}}
+            \arrow["{C_{n\times m}}", from=1-1, to=1-3]
+        \end{tikzcd}\]
 
-Objects in $C \downarrow 3$ are statements of `$n \leq 4$' relationships.
-Arrows in $C \downarrow 3$ from `$m \leq 3$' to `$n\leq 3$' are `$m\leq n$'.
-
-\[\begin{tikzcd}
-    {(1 \leq 3)} && {(2 \leq 3)} && {(3 \leq 3)}
-    \arrow["{1 \leq 2}"', from=1-1, to=1-3]
-    \arrow["{1 \leq 3}", from=1-1, to=1-5, curve={height=-18pt}]
-    \arrow["{2 \leq 3}"', from=1-3, to=1-5]
-\end{tikzcd}\]
-\end{example}
-
-
-\begin{example}
-
-Recall $\textbf{Matr(k)}$ has the natural numbers $\N$ as objects, and $(n\times m)$ matrices as arrows from $m \to n$.
-
-Then $\textbf{Matr(k)} \downarrow 3$ has as objects all $3\times n$ matrices where $n \in \N$.
-
-Then if object $A$ is a $3\times m$ matrix, and object $B$ is a $3\times n$ matrix,
-then an arrow $C : A \to B$ is an $n \times m$ matrix such that $A=BC$.
-
-Thus the situation in $\textbf{Matr(k)} \downarrow 3$ is
-\[\begin{tikzcd}
-    {A_{3\times m}} && {B_{3\times n}}
-    \arrow["{C_{n\times m}}", from=1-1, to=1-3]
-\end{tikzcd}\]
-
-indicating that this diagram commutes in $\textbf{Matr(k)}$:
-\[\begin{tikzcd}
-    {m} && {n} \\
-    \\
-    & {3}
-    \arrow["{A_{3\times m}}"', from=1-1, to=3-2]
-    \arrow["{B_{3\times n}}", from=1-3, to=3-2]
-    \arrow["{C_{n\times m}}", from=1-1, to=1-3]
-\end{tikzcd}\]
-
-\end{example}
+        indicating that this diagram commutes in $\textbf{Matr(k)}$:
+        \[\begin{tikzcd}
+            {m} && {n} \\
+            \\
+            & {3}
+            \arrow["{A_{3\times m}}"', from=1-1, to=3-2]
+            \arrow["{B_{3\times n}}", from=1-3, to=3-2]
+            \arrow["{C_{n\times m}}", from=1-1, to=1-3]
+        \end{tikzcd}\]
+    \end{example}
 
 \end{document}
