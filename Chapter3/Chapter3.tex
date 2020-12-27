@@ -362,7 +362,7 @@
         $h_1$ and $h_2$ are uniquely determined by symmetric applications of \cref{product}. But by \cref{product has one identity}, composition of $h_1$ and $h_2$ must give identities.
     \end{fact}
 
-    \begin{exercise}
+    \begin{exercise} \label{projections combine to identity}
         The fact that $\langle pr_a, pr_b \rangle = 1_{a\times b}$ follows as a special case of \cref{product has one identity}, by plugging in the projection functions.
         % https://q.uiver.app/?q=WzAsNSxbNCwxLCJiIl0sWzEsMV0sWzAsMSwiYSJdLFsyLDEsImEgXFx0aW1lcyBiIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMywyLCJwcl9hIiwyXSxbMywwLCJwcl9iIl0sWzQsMiwicHJfYSIsMl0sWzQsMCwicHJfYiJdLFszLDQsIjFfe2EgXFx0aW1lcyBifSIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         \[\begin{tikzcd}
@@ -429,17 +429,58 @@
         $$\langle f\circ h, g\circ h \rangle = h \circ \langle f, g \rangle.$$
     \end{exercise}
 
-    \begin{exercise}
-        Suppose a category $C$ has a terminal object $1$, and products. Let $a$ be a $C$-object and consider the product $a \times 1$.
-        % https://q.uiver.app/?q=WzAsNCxbNCwwLCIxIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImEgXFx0aW1lcyAxIl0sWzMsMiwicHJfYSIsMl0sWzMsMCwiISJdXQ==
+    \begin{exercise} \label{a = a * 1}
+        Suppose a category $C$ has a terminal object $t$, and products. Let $a$ be a $C$-object and consider the product $a \times t$.
+        % https://q.uiver.app/?q=WzAsNCxbNCwwLCIxIl0sWzEsMF0sWzAsMCwiYSJdLFsyLDAsImEgXFx0aW1lcyAxIl0sWzMsMl0sWzMsMF1d
         \[\begin{tikzcd}
-            {a} & {} & {a \times 1} && {1}
-            \arrow["{pr_a}"', from=1-3, to=1-1]
-            \arrow["{pr_1}", from=1-3, to=1-5]
+            {a} & {} & {a \times t} && {t}
+            \arrow[from=1-3, to=1-1]
+            \arrow[from=1-3, to=1-5]
         \end{tikzcd}\]
+        Plugging $a$ into the product definition using the arrows given by $1_a$ and $!$ (the unique arrow to $t$)
+        yields the unique arrow $h = \langle 1_a, ! \rangle$.
+        % https://q.uiver.app/?q=WzAsNSxbNCwyLCJ0Il0sWzEsMl0sWzAsMiwiYSJdLFsyLDIsImEgXFx0aW1lcyB0Il0sWzIsMCwiYSJdLFszLDIsInByX2EiXSxbMywwXSxbNCwyLCIxX2EiLDJdLFs0LDAsIiEiXSxbNCwzLCJoIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        \[\begin{tikzcd}
+            && {a} \\
+            \\
+            {a} & {} & {a \times t} && {t}
+            \arrow["{pr_a}", from=3-3, to=3-1]
+            \arrow[from=3-3, to=3-5]
+            \arrow["{1_a}"', from=1-3, to=3-1]
+            \arrow["{!}", from=1-3, to=3-5]
+            \arrow["{h}", from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        By definition we have that $pr_a \o h = 1_a$. And since $h \o pr_a$ maps $a \times t \to a \times t$ it follows from \cref{product has one identity} that $h \o pr_a = 1_{a \times t}$. Given these two iso arrows we conclude
+        $$a \cong a \times t.$$
     \end{exercise}
 
-    \begin{defi}
+    \begin{example}
+        As a specific example of \cref{a = a * 1}, let's work in \textbf{Set} where $A$ is any set, and our terminal set $t$ is any singleton set $\set{b}$.
+        % https://q.uiver.app/?q=WzAsNSxbNCwyLCJcXHsgYiBcXH0iXSxbMSwyXSxbMCwyLCJBIl0sWzIsMiwiQSBcXHRpbWVzIFxceyBiIFxcfSJdLFsyLDAsIkEiXSxbMywyLCJwcl9hIl0sWzMsMF0sWzQsMiwiMV9hIiwyXSxbNCwwLCIhIl0sWzQsMywiaCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            && {A} \\
+            \\
+            {A} & {} & {A \times \{ b \}} && {\{ b \}}
+            \arrow["{pr_a}", from=3-3, to=3-1]
+            \arrow["{pr_b}"', from=3-3, to=3-5]
+            \arrow["{1_a}"', from=1-3, to=3-1]
+            \arrow["{!}", from=1-3, to=3-5]
+            \arrow["{h}", from=1-3, to=3-3, dashed]
+        \end{tikzcd}\]
+        Now we can explicitly say what all of our functions do:
+        $$1_a(x) = x$$
+        $$!(x) = b$$
+        $$pr_a\left( \langle a, b \rangle \right) = a$$
+        $$pr_b\left( \langle a, b \rangle \right) = b$$
+        $$h(x) = \langle x, b \rangle$$
+        The fact that $pr_a(h(x)) = x$ and $h(pr_a(\langle a, b \rangle)) = \langle a, b \rangle$ gives the isomorphism
+        $$A \cong A \times \set{b}.$$
+        Intuitively, elements in $A$ can be placed in one-to-one correspondence with elements in $A \times \set{b}$
+        by simply sending $x$ to the tuple $\langle x, b \rangle$.
+
+    \end{example}
+
+    \begin{defi} \label{product arrow}
         Given two products $a \times b$ and $c \times d$, and arrows $f : a \to c$ and $g : b \to d$
         % https://q.uiver.app/?q=WzAsOCxbMiw2XSxbNCwwLCJiIl0sWzQsMiwiZCJdLFswLDAsImEiXSxbMCwyLCJjIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMiwyLCJjIFxcdGltZXMgZCJdLFsyLDFdLFszLDQsImYiXSxbMSwyLCJnIl0sWzUsMywicHJfYSJdLFs1LDEsInByX2IiLDJdLFs2LDQsInByX2MiLDJdLFs2LDIsInByX2QiXV0=
         \[\begin{tikzcd}
@@ -457,7 +498,7 @@
             \arrow["{pr_c}"', from=3-3, to=3-1]
             \arrow["{pr_d}", from=3-3, to=3-5]
         \end{tikzcd}\]
-        the unique \emph{product arrow} unique arrow $(f \times g) : a \times b \to c \times d$ is found as $\langle f \circ pr_a, g \circ pr_b \rangle$.
+        the unique \emph{product arrow} $(f \times g) : a \times b \to c \times d$ is found as $\langle f \circ pr_a, g \circ pr_b \rangle$.
         % https://q.uiver.app/?q=WzAsOCxbMiw2XSxbNCwwLCJiIl0sWzQsMiwiZCJdLFswLDAsImEiXSxbMCwyLCJjIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMiwyLCJjIFxcdGltZXMgZCJdLFsyLDFdLFszLDQsImYiXSxbMSwyLCJnIl0sWzUsMywicHJfYSJdLFs1LDEsInByX2IiLDJdLFs2LDQsInByX2MiLDJdLFs2LDIsInByX2QiXSxbNSw2LCJmXFx0aW1lcyBnIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
         \[\begin{tikzcd}
             {a} && {a \times b} && {b} \\
@@ -478,6 +519,7 @@
     \end{defi}
 
     \begin{exercise}
+        In the reflexive case we consider the product arrow $1_a \times 1_b$.
         % https://q.uiver.app/?q=WzAsOCxbMiw2XSxbNCwwLCJiIl0sWzQsMiwiYiJdLFswLDAsImEiXSxbMCwyLCJhIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMiwyLCJhIFxcdGltZXMgYiJdLFsyLDFdLFszLDQsIjFfYSJdLFsxLDIsIjFfYiJdLFs1LDMsInByX2EiXSxbNSwxLCJwcl9iIiwyXSxbNiw0LCJwcl9hIiwyXSxbNiwyLCJwcl9iIl0sWzUsNiwiMV9hIFxcdGltZXMgMV9iIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
         \[\begin{tikzcd}
             {a} && {a \times b} && {b} \\
@@ -495,9 +537,17 @@
             \arrow["{pr_b}", from=3-3, to=3-5]
             \arrow["{1_a \times 1_b}" description, from=1-3, to=3-3, dashed]
         \end{tikzcd}\]
+        By definition we have
+        $$1_a \times 1_b = \langle 1_a \o pr_a, 1_b \o pr_b \rangle
+        = \langle pr_a, pr_b \rangle.$$
+        Then applying \cref{projections combine to identity} from here gives the desired result
+        $$1_a \times 1_b = 1_{a \times b}.$$
+
     \end{exercise}
 
     \begin{exercise}
+        The isomorphism $a \times b \cong b \times a$ follows by plugging each object into \cref{product} in relation to the other.
+        In this way the two unique (dashed) arrows are found:
         % https://q.uiver.app/?q=WzAsOCxbMiw2XSxbNCwwLCJiIl0sWzQsMiwiYSJdLFswLDAsImEiXSxbMCwyLCJiIl0sWzIsMCwiYSBcXHRpbWVzIGIiXSxbMiwyLCJiIFxcdGltZXMgYSJdLFsyLDFdLFs1LDNdLFs1LDFdLFs2LDRdLFs2LDJdLFszLDJdLFsxLDRdLFs1LDYsIiIsMSx7ImN1cnZlIjoxLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiw1LCIiLDEseyJjdXJ2ZSI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
         \[\begin{tikzcd}
             {a} && {a \times b} && {b} \\
@@ -516,6 +566,7 @@
             \arrow[from=1-3, to=3-3, curve={height=6pt}, dashed]
             \arrow[from=3-3, to=1-3, curve={height=6pt}, dashed]
         \end{tikzcd}\]
+        and \cref{product has one identity} tells us that they are iso.
     \end{exercise}
 
     \begin{exercise}
@@ -542,8 +593,9 @@
 
     \begin{exercise}
         \begin{enumerate}[(i)]
+            Consider the situation of a pair of arrows to the codomain objects of the product arrow's constituent arrows:
             \item 
-            % https://q.uiver.app/?q=WzAsOSxbMiw4XSxbNCwyLCJiIl0sWzQsNCwiZCJdLFswLDIsImEiXSxbMCw0LCJjIl0sWzIsMiwiYSBcXHRpbWVzIGIiXSxbMiw0LCJjIFxcdGltZXMgZCJdLFsyLDNdLFsyLDAsImUiXSxbMyw0LCJmIl0sWzEsMiwiZyJdLFs1LDNdLFs1LDFdLFs2LDRdLFs2LDJdLFs1LDYsImZcXHRpbWVzIGciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOCwzLCJoIiwyXSxbOCwxLCJrIl1d
+            % https://q.uiver.app/?q=WzAsOSxbMiw4XSxbNCwyLCJiIl0sWzQsNCwiZCJdLFswLDIsImEiXSxbMCw0LCJjIl0sWzIsMiwiYSBcXHRpbWVzIGIiXSxbMiw0LCJjIFxcdGltZXMgZCJdLFsyLDNdLFsyLDAsImUiXSxbMyw0LCJmIl0sWzEsMiwiZyJdLFs1LDMsInByX2EiXSxbNSwxLCJwcl9iIiwyXSxbNiw0XSxbNiwyXSxbNSw2LCJmXFx0aW1lcyBnIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMywiaCIsMl0sWzgsMSwiayJdLFs4LDUsIlxcbGFuZ2xlIGgsIGsgXFxyYW5nbGUiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
             \[\begin{tikzcd}
                 && {e} \\
                 \\
@@ -556,17 +608,36 @@
                 && {}
                 \arrow["{f}", from=3-1, to=5-1]
                 \arrow["{g}", from=3-5, to=5-5]
-                \arrow[from=3-3, to=3-1]
-                \arrow[from=3-3, to=3-5]
+                \arrow["{pr_a}", from=3-3, to=3-1]
+                \arrow["{pr_b}"', from=3-3, to=3-5]
                 \arrow[from=5-3, to=5-1]
                 \arrow[from=5-3, to=5-5]
                 \arrow["{f\times g}" description, from=3-3, to=5-3, dashed]
                 \arrow["{h}"', from=1-3, to=3-1]
                 \arrow["{k}", from=1-3, to=3-5]
+                \arrow["{\langle h, k \rangle}" description, from=1-3, to=3-3, dashed]
             \end{tikzcd}\]
+            We can use composition to collapse $a$ and $b$ out of the picture:
+            % https://q.uiver.app/?q=WzAsNixbMiw2XSxbNCwyLCJkIl0sWzAsMiwiYyJdLFsyLDIsImMgXFx0aW1lcyBkIl0sWzIsMV0sWzIsMCwiZSJdLFszLDJdLFszLDFdLFs1LDMsIihmIFxcdGltZXMgZykgXFxjaXJjIFxcbGFuZ2xlIGgsIGsgXFxyYW5nbGUiLDFdLFs1LDIsImYgXFxjaXJjIGgiLDJdLFs1LDEsImcgXFxjaXJjIGsiXV0=
+            \[\begin{tikzcd}
+                && {e} \\
+                && {} \\
+                {c} && {c \times d} && {d} \\
+                \\
+                \\
+                \\
+                && {}
+                \arrow[from=3-3, to=3-1]
+                \arrow[from=3-3, to=3-5]
+                \arrow["{(f \times g) \circ \langle h, k \rangle}" description, from=1-3, to=3-3]
+                \arrow["{f \circ h}"', from=1-3, to=3-1]
+                \arrow["{g \circ k}", from=1-3, to=3-5]
+            \end{tikzcd}\]
+            and thus find that $(f \times g) \circ \langle h, k \rangle$ is the unique arrow determined by $f \o h$ and $g \o k$.
 
             \item
-            % https://q.uiver.app/?q=WzAsMTEsWzIsOF0sWzQsMiwiYiJdLFs0LDQsImQiXSxbMCwyLCJhIl0sWzAsNCwiYyJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsNCwiYyBcXHRpbWVzIGQiXSxbMiwzXSxbMCwwLCJlIl0sWzQsMCwiZSciXSxbMiwwLCJlIFxcdGltZXMgZSciXSxbMyw0LCJmIl0sWzEsMiwiZyJdLFs1LDNdLFs1LDFdLFs2LDRdLFs2LDJdLFs1LDYsImZcXHRpbWVzIGciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOCwzLCJoIiwyXSxbMTAsOF0sWzEwLDldLFsxMCw1LCJnIFxcdGltZXMgayIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs5LDEsImsiXV0=
+            In the situation where we can place two product arrows end-to-end:
+            % https://q.uiver.app/?q=WzAsMTEsWzIsOF0sWzQsMiwiYiJdLFs0LDQsImQiXSxbMCwyLCJhIl0sWzAsNCwiYyJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsNCwiYyBcXHRpbWVzIGQiXSxbMiwzXSxbMCwwLCJlIl0sWzQsMCwiZSciXSxbMiwwLCJlIFxcdGltZXMgZSciXSxbMyw0LCJmIl0sWzEsMiwiZyJdLFs1LDNdLFs1LDFdLFs2LDRdLFs2LDJdLFs1LDYsImZcXHRpbWVzIGciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOCwzLCJoIiwyXSxbMTAsOF0sWzEwLDldLFsxMCw1LCJoIFxcdGltZXMgayIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs5LDEsImsiXV0=
             \[\begin{tikzcd}
                 {e} && {e \times e'} && {e'} \\
                 \\
@@ -587,12 +658,141 @@
                 \arrow["{h}"', from=1-1, to=3-1]
                 \arrow[from=1-3, to=1-1]
                 \arrow[from=1-3, to=1-5]
-                \arrow["{g \times k}" description, from=1-3, to=3-3, dashed]
+                \arrow["{h \times k}" description, from=1-3, to=3-3, dashed]
                 \arrow["{k}", from=1-5, to=3-5]
             \end{tikzcd}\]
+            we again use composition to collapse the middle level
+            % https://q.uiver.app/?q=WzAsOCxbMiw2XSxbNCwyLCJkIl0sWzAsMiwiYyJdLFsyLDIsImMgXFx0aW1lcyBkIl0sWzIsMV0sWzAsMCwiZSJdLFs0LDAsImUnIl0sWzIsMCwiZSBcXHRpbWVzIGUnIl0sWzMsMl0sWzMsMV0sWzcsNV0sWzcsNl0sWzcsMywiKGYgXFx0aW1lcyBnKSBcXGNpcmMoaFxcdGltZXMgaykiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwxLCJnIFxcY2lyYyBrIiwxXSxbNSwyLCJmIFxcY2lyYyBoIiwxXV0=
+            \[\begin{tikzcd}
+                {e} && {e \times e'} && {e'} \\
+                && {} \\
+                {c} && {c \times d} && {d} \\
+                \\
+                \\
+                \\
+                && {}
+                \arrow[from=3-3, to=3-1]
+                \arrow[from=3-3, to=3-5]
+                \arrow[from=1-3, to=1-1]
+                \arrow[from=1-3, to=1-5]
+                \arrow["{(f \times g) \circ(h\times k)}" description, from=1-3, to=3-3, dashed]
+                \arrow["{g \circ k}" description, from=1-5, to=3-5]
+                \arrow["{f \circ h}" description, from=1-1, to=3-1]
+            \end{tikzcd}\]
+            Giving (more details needed?)
+            $$(f \times g) \circ(h\times k) = (f \o g) \times (h \o k).$$
         \end{enumerate}
     \end{exercise}
 
-    
+    \subsection{Finite Products}
+    \begin{defi}
+        Given a $C$-object $a$, the \emph{finite product} (for some integer $m$) consists of object $a_m$, and $m$ projection arrows $pr_a^m$.
+        % https://q.uiver.app/?q=WzAsNSxbMiw3XSxbMiwyXSxbMCwxXSxbMiwzLCJhXm0iXSxbMiwwLCJhIl0sWzMsNCwicHJfYV5tIiwxLHsiY3VydmUiOjV9XSxbMyw0LCJwcl9hXjEiLDEseyJjdXJ2ZSI6LTV9XSxbMyw0LCJwcl9hXjIiLDEseyJjdXJ2ZSI6LTN9XSxbNyw1LCIiLDEseyJsZW5ndGgiOjcwLCJsZXZlbCI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+        \[\begin{tikzcd}
+            && {a} \\
+            {} \\
+            && {} \\
+            && {a^m} \\
+            \\
+            \\
+            \\
+            && {}
+            \arrow["{pr_a^m}"{name=0, description}, from=4-3, to=1-3, curve={height=30pt}]
+            \arrow["{pr_a^1}" description, from=4-3, to=1-3, curve={height=-30pt}]
+            \arrow["{pr_a^2}"{name=1, description}, from=4-3, to=1-3, curve={height=-18pt}]
+            \arrow[from=1, to=0, shorten <=7pt, shorten >=7pt, dotted, no head]
+        \end{tikzcd}\]
+
+        So that for any $m$ parallel arrows $f_i : c \to a$, there is a unique arrow $\langle f_1, \ldots, f_m \rangle : c \to a^m$ making
+        % https://q.uiver.app/?q=WzAsNixbMiwxMF0sWzIsNV0sWzAsNF0sWzIsNiwiYV5tIl0sWzIsMywiYSJdLFsyLDAsImMiXSxbMyw0LCJwcl9hXm0iLDEseyJjdXJ2ZSI6MX1dLFszLDQsInByX2FeMSIsMSx7ImN1cnZlIjotNX1dLFszLDQsInByX2FeMiIsMSx7ImN1cnZlIjotM31dLFs1LDQsImZfMSIsMSx7ImN1cnZlIjo1fV0sWzUsNCwiZl8yIiwxLHsiY3VydmUiOjN9XSxbNSw0LCJmX20iLDEseyJjdXJ2ZSI6LTF9XSxbNSwzLCJcXGxhbmdsZSBmXzEsIFxcbGRvdHMsIGZfbSBcXHJhbmdsZSIsMSx7ImN1cnZlIjotNSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsNiwiIiwxLHsibGVuZ3RoIjo3MCwibGV2ZWwiOjEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDExLCIiLDEseyJsZW5ndGgiOjcwLCJsZXZlbCI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+        \[\begin{tikzcd}
+            && {c} \\
+            \\
+            \\
+            && {a} \\
+            {} \\
+            && {} \\
+            && {a^m} \\
+            \\
+            \\
+            \\
+            && {}
+            \arrow["{pr_a^m}"{name=0, description}, from=7-3, to=4-3, curve={height=6pt}]
+            \arrow["{pr_a^1}" description, from=7-3, to=4-3, curve={height=-30pt}]
+            \arrow["{pr_a^2}"{name=1, description}, from=7-3, to=4-3, curve={height=-18pt}]
+            \arrow["{f_1}" description, from=1-3, to=4-3, curve={height=30pt}]
+            \arrow["{f_2}"{name=2, description}, from=1-3, to=4-3, curve={height=18pt}]
+            \arrow["{f_m}"{name=3, description}, from=1-3, to=4-3, curve={height=-6pt}]
+            \arrow["{\langle f_1, \ldots, f_m \rangle}" description, from=1-3, to=7-3, curve={height=-60pt}, dashed]
+            \arrow[from=1, to=0, shorten <=4pt, shorten >=4pt, dotted, no head]
+            \arrow[from=2, to=3, shorten <=4pt, shorten >=4pt, dotted, no head]
+        \end{tikzcd}\]
+        commute.
+    \end{defi}
+
+    \begin{defi}
+        A more \emph{general finite product} of $m$ (not necessarily different) $C$-objects $a_1 \times a_2 \times \ldots \times a_m$
+        consists of a $C$-object and $m$ projection arrows:
+        % https://q.uiver.app/?q=WzAsNCxbMiwyLCJhXzEgXFx0aW1lcyBcXGxkb3RzIFxcdGltZXMgYV9tIl0sWzAsMCwiYV8xIl0sWzQsMCwiYV9tIl0sWzEsMCwiYV8yIl0sWzAsMSwicHJfe2FfMX0iXSxbMCwzLCJwcl97YV8yfSIsMl0sWzMsMiwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCJwcl97YV9tfSIsMl1d
+        \[\begin{tikzcd}
+            {a_1} & {a_2} &&& {a_m} \\
+            \\
+            && {a_1 \times \ldots \times a_m}
+            \arrow["{pr_{a_1}}", from=3-3, to=1-1]
+            \arrow["{pr_{a_2}}"', from=3-3, to=1-2]
+            \arrow[from=1-2, to=1-5, dotted, no head]
+            \arrow["{pr_{a_m}}"', from=3-3, to=1-5]
+        \end{tikzcd}\]
+        So that for any $c$-object with $m$ arrows $f_1 : c \to a_1$, $f_2 : c \to a_2$, etc,
+        there is a unique arrow $\langle f_1, f_2, \ldots, f_m \rangle$ making
+        % https://q.uiver.app/?q=WzAsNSxbMiw0LCJhXzEgXFx0aW1lcyBcXGxkb3RzIFxcdGltZXMgYV9tIl0sWzAsMiwiYV8xIl0sWzQsMiwiYV9tIl0sWzEsMiwiYV8yIl0sWzIsMCwiYyJdLFswLDEsInByX3thXzF9Il0sWzAsMywicHJfe2FfMn0iLDJdLFszLDIsIiIsMix7ImN1cnZlIjotMSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCJwcl97YV9tfSIsMl0sWzQsMSwiZl8xIiwyXSxbNCwzLCJmXzIiXSxbNCwyLCJmX20iXSxbNCwwLCJcXGxhbmdsZSBmXzEsIGZfMiwgXFxsZG90cywgZl9tIFxccmFuZ2xlIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        \[\begin{tikzcd}
+            && {c} \\
+            \\
+            {a_1} & {a_2} &&& {a_m} \\
+            \\
+            && {a_1 \times \ldots \times a_m}
+            \arrow["{pr_{a_1}}", from=5-3, to=3-1]
+            \arrow["{pr_{a_2}}"', from=5-3, to=3-2]
+            \arrow[from=3-2, to=3-5, curve={height=-6pt}, dotted, no head]
+            \arrow["{pr_{a_m}}"', from=5-3, to=3-5]
+            \arrow["{f_1}"', from=1-3, to=3-1]
+            \arrow["{f_2}", from=1-3, to=3-2]
+            \arrow["{f_m}", from=1-3, to=3-5]
+            \arrow["{\langle f_1, f_2, \ldots, f_m \rangle}", from=1-3, to=5-3, dashed]
+        \end{tikzcd}\]
+        commute.
+    \end{defi}
+
+    \begin{defi}
+        A \emph{general product arrow} is given by a family of $m$ mappings between the components of two general products.
+
+        % https://q.uiver.app/?q=WzAsOCxbMiw2LCJhXzEgXFx0aW1lcyBcXGxkb3RzIFxcdGltZXMgYV9tIl0sWzAsNCwiYV8xIl0sWzQsNCwiYV9tIl0sWzEsNCwiYV8yIl0sWzAsMiwiYl8xIl0sWzEsMiwiYl8yIl0sWzQsMiwiYl9tIl0sWzIsMCwiYl8xIFxcdGltZXMgYl8yIFxcdGltZXMgXFxsZG90cyBcXHRpbWVzIGJfbSJdLFswLDEsInByX3thXzF9Il0sWzAsMywicHJfe2FfMn0iLDJdLFszLDIsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwicHJfe2FfbX0iLDJdLFs1LDYsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNCwicHJfe2JfMX0iLDJdLFs3LDUsInByX3tiXzJ9Il0sWzcsNiwicHJfe2JfbX0iXSxbMSw0LCJmXzEiXSxbMyw1LCJmXzIiXSxbMiw2LCJmX20iLDJdLFswLDcsImZfMSBcXHRpbWVzIGZfMiBcXGNkb3RzIFxcdGltZXMgZl9tIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzE3LDE4LCIiLDIseyJvZmZzZXQiOi00LCJsZXZlbCI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+        \[\begin{tikzcd}
+            && {b_1 \times b_2 \times \ldots \times b_m} \\
+            \\
+            {b_1} & {b_2} &&& {b_m} \\
+            \\
+            {a_1} & {a_2} &&& {a_m} \\
+            \\
+            && {a_1 \times \ldots \times a_m}
+            \arrow["{pr_{a_1}}", from=7-3, to=5-1]
+            \arrow["{pr_{a_2}}"', from=7-3, to=5-2]
+            \arrow[from=5-2, to=5-5, dotted, no head]
+            \arrow["{pr_{a_m}}"', from=7-3, to=5-5]
+            \arrow[from=3-2, to=3-5, dotted, no head]
+            \arrow["{pr_{b_1}}"', from=1-3, to=3-1]
+            \arrow["{pr_{b_2}}", from=1-3, to=3-2]
+            \arrow["{pr_{b_m}}", from=1-3, to=3-5]
+            \arrow["{f_1}", from=5-1, to=3-1]
+            \arrow["{f_2}"{name=0}, from=5-2, to=3-2]
+            \arrow["{f_m}"{name=1, swap}, from=5-5, to=3-5]
+            \arrow["{f_1 \times f_2 \cdots \times f_m}"', from=7-3, to=1-3, dashed]
+            \arrow[from=0, to=1, shift left=4, dotted, no head]
+        \end{tikzcd}\]
+        The product arrow $f_1 \times f_2 \cdots \times f_m$ is the unique arrow found by using 
+        $$\langle f_1 \o pr_{a_1}, f_2 \o pr_{a_2}, \ldots, f_m \o pr_{a_m} \rangle$$
+        in the general product definiton of $b_1 \times b_2 \times \ldots \times b_m$.
+    \end{defi}
 
 \end{document}  
