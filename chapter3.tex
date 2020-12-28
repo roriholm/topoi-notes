@@ -1,8 +1,4 @@
-\documentclass[12pt]{article}
-\usepackage{../common}
-\begin{document}
-
-\chapter{3}{Arrows Instead of Epsilon}
+\chapter{Arrows Instead of Epsilon}
 \section{Monic arrows}
     Monic arrows are an abstraction of injective functions.
     \begin{defi}
@@ -180,91 +176,85 @@
     \begin{defi}
         An object $c$ is \emph{initial} if for every $C$-object $a$, there is exactly one arrow $f : c \to a$.
 
+        % https://q.uiver.app/?q=WzAsMTMsWzAsMCwiYyJdLFs2LDEsIlxcYnVsbGV0Il0sWzUsMSwiXFxidWxsZXQiXSxbNywxLCJcXGJ1bGxldCJdLFs4LDEsIlxcYnVsbGV0Il0sWzgsMywiXFxidWxsZXQiXSxbOCwyLCJcXGJ1bGxldCJdLFs3LDIsIlxcYnVsbGV0Il0sWzYsMiwiXFxidWxsZXQiXSxbNSwyLCJcXGJ1bGxldCJdLFs1LDMsIlxcYnVsbGV0Il0sWzYsMywiXFxidWxsZXQiXSxbNywzLCJcXGJ1bGxldCJdLFswLDQsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDVdLFswLDJdLFswLDEsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDldLFswLDEwXSxbMCwxMV0sWzAsMTJdLFswLDhdLFswLDddLFswLDZdXQ==
         \[\begin{tikzcd}
-            &&& {\bullet} \\
-            && {\bullet} & {\bullet} \\
-            && {\bullet} & {\bullet} \\
-            {c} && {\bullet} & {\bullet} \\
-            && {\bullet} & {\bullet} \\
-            && {\bullet} & {\bullet} \\
-            &&& {\bullet}
-            \arrow[from=4-1, to=2-3]
-            \arrow[from=4-1, to=3-3]
-            \arrow[from=4-1, to=4-3]
-            \arrow[from=4-1, to=5-3]
-            \arrow[from=4-1, to=6-3]
-            \arrow[from=4-1, to=1-4, curve={height=-6pt}]
-            \arrow[from=4-1, to=7-4, curve={height=6pt}]
-            \arrow[from=4-1, to=6-4]
-            \arrow[from=4-1, to=5-4]
-            \arrow[from=4-1, to=4-4, curve={height=6pt}]
-            \arrow[from=4-1, to=3-4]
-            \arrow[from=4-1, to=2-4]
+            {c} \\
+            &&&&& {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+            &&&&& {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+            &&&&& {\bullet} & {\bullet} & {\bullet} & {\bullet}
+            \arrow[from=1-1, to=2-9, dashed]
+            \arrow[from=1-1, to=4-9, dashed]
+            \arrow[from=1-1, to=2-6, dashed]
+            \arrow[from=1-1, to=2-7, dashed]
+            \arrow[from=1-1, to=2-8, dashed]
+            \arrow[from=1-1, to=3-6, dashed]
+            \arrow[from=1-1, to=4-6, dashed]
+            \arrow[from=1-1, to=4-7, dashed]
+            \arrow[from=1-1, to=4-8, dashed]
+            \arrow[from=1-1, to=3-7, dashed]
+            \arrow[from=1-1, to=3-8, dashed]
+            \arrow[from=1-1, to=3-9, dashed]
         \end{tikzcd}\]
     \end{defi}
 
 \section{Terminal objects}
     \begin{defi}
         An object $c$ is \emph{terminal} if for every $C$-object $a$, there is exactly one arrow $f : a \to c$.       
+        % https://q.uiver.app/?q=WzAsMTMsWzgsMywiYyJdLFsxLDAsIlxcYnVsbGV0Il0sWzAsMCwiXFxidWxsZXQiXSxbMiwwLCJcXGJ1bGxldCJdLFszLDAsIlxcYnVsbGV0Il0sWzMsMiwiXFxidWxsZXQiXSxbMywxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzEsMSwiXFxidWxsZXQiXSxbMCwxLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzEsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFs0LDAsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs5LDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMCwwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTEsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEyLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs4LDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs3LDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
         \[\begin{tikzcd}
-            {\bullet} \\
-            {\bullet} & {\bullet} \\
-            {\bullet} & {\bullet} \\
-            {\bullet} & {\bullet} && {c} \\
-            {\bullet} & {\bullet} \\
-            {\bullet} & {\bullet} \\
-            {\bullet}
-            \arrow[from=2-1, to=4-4]
-            \arrow[from=3-1, to=4-4]
-            \arrow[from=4-1, to=4-4, curve={height=6pt}]
-            \arrow[from=5-1, to=4-4]
-            \arrow[from=6-1, to=4-4]
-            \arrow[from=1-1, to=4-4, curve={height=-6pt}]
-            \arrow[from=7-1, to=4-4, curve={height=6pt}]
-            \arrow[from=6-2, to=4-4]
-            \arrow[from=5-2, to=4-4]
-            \arrow[from=4-2, to=4-4]
-            \arrow[from=3-2, to=4-4]
-            \arrow[from=2-2, to=4-4]
+            {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+            {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+            {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+            &&&&&&&& {c}
+            \arrow[from=1-4, to=4-9, dashed]
+            \arrow[from=3-4, to=4-9, dashed]
+            \arrow[from=1-1, to=4-9, dashed]
+            \arrow[from=1-2, to=4-9, dashed]
+            \arrow[from=1-3, to=4-9, dashed]
+            \arrow[from=2-1, to=4-9, dashed]
+            \arrow[from=3-1, to=4-9, dashed]
+            \arrow[from=3-2, to=4-9, dashed]
+            \arrow[from=3-3, to=4-9, dashed]
+            \arrow[from=2-2, to=4-9, dashed]
+            \arrow[from=2-3, to=4-9, dashed]
+            \arrow[from=2-4, to=4-9, dashed]
         \end{tikzcd}\]
     \end{defi}
 
     \begin{exercise}
         Let $c_1$ and $c_2$ be terminal $C-objects$.
+            % https://q.uiver.app/?q=WzAsMTQsWzgsNCwiY18yIl0sWzEsMSwiXFxidWxsZXQiXSxbMCwxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzMsMSwiXFxidWxsZXQiXSxbMywzLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbMSwyLCJcXGJ1bGxldCJdLFswLDIsIlxcYnVsbGV0Il0sWzAsMywiXFxidWxsZXQiXSxbMSwzLCJcXGJ1bGxldCJdLFsyLDMsIlxcYnVsbGV0Il0sWzgsMCwiY18xIl0sWzQsMCwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEwLDAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMSwwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTIsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsMCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMTMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDEzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywxMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMTMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDEzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNywxMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksMTMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDEzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTIsMTMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMSwxMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEwLDEzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTMsMCwiIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMTMsIiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
             \[\begin{tikzcd}
-                {\bullet} \\
-                {\bullet} & {\bullet} \\
-                {\bullet} & {\bullet} && {c_1} \\
-                {\bullet} & {\bullet} \\
-                {\bullet} & {\bullet} && {c_2} \\
-                {\bullet} & {\bullet} \\
-                {\bullet}
-                \arrow[from=2-1, to=3-4]
-                \arrow[from=3-1, to=3-4]
-                \arrow[from=4-1, to=3-4]
-                \arrow[from=5-1, to=3-4]
-                \arrow[from=6-1, to=3-4]
-                \arrow[from=1-1, to=3-4]
-                \arrow[from=7-1, to=3-4]
-                \arrow[from=6-2, to=3-4]
-                \arrow[from=5-2, to=3-4]
-                \arrow[from=4-2, to=3-4]
-                \arrow[from=3-2, to=3-4]
-                \arrow[from=2-2, to=3-4]
-                \arrow[from=1-1, to=5-4, curve={height=6pt}]
-                \arrow[from=2-2, to=5-4]
-                \arrow[from=2-1, to=5-4]
-                \arrow[from=3-1, to=5-4]
-                \arrow[from=3-2, to=5-4]
-                \arrow[from=4-1, to=5-4]
-                \arrow[from=4-2, to=5-4]
-                \arrow[from=5-1, to=5-4]
-                \arrow[from=5-2, to=5-4]
-                \arrow[from=6-1, to=5-4]
-                \arrow[from=6-2, to=5-4]
-                \arrow[from=7-1, to=5-4]
-                \arrow[from=3-4, to=5-4, shift left=1]
-                \arrow[from=5-4, to=3-4, shift left=1]
+                &&&&&&&& {c_1} \\
+                {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+                {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+                {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+                &&&&&&&& {c_2}
+                \arrow[from=2-4, to=5-9, dashed]
+                \arrow[from=4-4, to=5-9, dashed]
+                \arrow[from=2-1, to=5-9, dashed]
+                \arrow[from=2-2, to=5-9, dashed]
+                \arrow[from=2-3, to=5-9, dashed]
+                \arrow[from=3-1, to=5-9, dashed]
+                \arrow[from=4-1, to=5-9, dashed]
+                \arrow[from=4-2, to=5-9, dashed]
+                \arrow[from=4-3, to=5-9, dashed]
+                \arrow[from=3-2, to=5-9, dashed]
+                \arrow[from=3-3, to=5-9, dashed]
+                \arrow[from=3-4, to=5-9, dashed]
+                \arrow[from=2-1, to=1-9, dashed]
+                \arrow[from=2-4, to=1-9, dashed]
+                \arrow[from=2-3, to=1-9, dashed]
+                \arrow[from=2-2, to=1-9, dashed]
+                \arrow[from=3-4, to=1-9, dashed]
+                \arrow[from=3-3, to=1-9, dashed]
+                \arrow[from=3-1, to=1-9, dashed]
+                \arrow[from=4-4, to=1-9, dashed]
+                \arrow[from=4-3, to=1-9, dashed]
+                \arrow[from=4-2, to=1-9, dashed]
+                \arrow[from=4-1, to=1-9, dashed]
+                \arrow[from=1-9, to=5-9, shift left=1, dashed]
+                \arrow[from=5-9, to=1-9, shift left=1, dashed]
             \end{tikzcd}\]
         By terminality there is a unique arrow $f_1 : c_1 \to c_2$ and a unique arrow $f_2 : c_2 \to c_1$.
         Then by the category axiom, $f_2 \o f_1 : c_1 \to c_1$ and $f_1 \o f_2 : c_2 \to c_2$ must exist.
@@ -942,7 +932,7 @@
 
 \section{Equalizers}
 
-    \begin{defi}
+    \begin{defi} \label{equalizer}
         An arrow $i$ \emph{equalizes} $f$ and $g$ if they are laid out as follows
         % https://q.uiver.app/?q=WzAsNCxbMSwwXSxbMiwxLCJhIl0sWzQsMSwiYiJdLFswLDEsImUiXSxbMSwyLCJmIl0sWzEsMiwiZyIsMix7Im9mZnNldCI6MX1dLFszLDEsImkiLDJdXQ==
         \[\begin{tikzcd}
@@ -1054,7 +1044,8 @@
 \section{Limits and co-limits}
 
     \begin{defi}
-        A \emph{diagram}...
+        A \emph{diagram} is informally a `view' of some objects and arrows within a category.
+        We haven't looked at functors yet but formally, a diagram in a category $C$ is a functor $F : J \to C$ where $J$ is an indexing category. (Riehl pg 38)
     \end{defi}
 
     \begin{defi}
@@ -1087,4 +1078,250 @@
             \arrow[from=2-5, to=2-1, dashed]
         \end{tikzcd}\]
     \end{defi}
-\end{document}  
+
+    We can apply cones to define some earlier objects in a more succinct way.
+
+    \begin{defi}
+        The \emph{product} of $a$ and $b$ is a limit for the arrow-less diagram
+        % https://q.uiver.app/?q=WzAsMixbMCwwLCJhIl0sWzIsMCwiYiJdXQ==
+        \[\begin{tikzcd}
+            {a} && {b.}
+        \end{tikzcd}\]
+    \end{defi}
+
+    \begin{defi}
+        An \emph{equalizer} of $f$ and $g$ is a limit for the diagram 
+        % https://q.uiver.app/?q=WzAsMixbMCwwLCJhIl0sWzIsMCwiYiJdLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dXQ==
+        \[\begin{tikzcd}
+            {a} && {b}
+            \arrow["{g}"', from=1-1, to=1-3, shift right=1]
+            \arrow["{f}", from=1-1, to=1-3, shift left=1]
+        \end{tikzcd}\]
+    \end{defi}
+
+    \begin{defi}
+        A \emph{terminal object} is a limit for the empty diagram.
+    \end{defi}
+
+    \begin{exercise}
+        Dualize to reach definitions for \emph{co-cones} and \emph{co-limits}.
+    \end{exercise}
+
+\section{Co-equalizers}
+
+    \begin{defi}
+        A \emph{co-equalizer} of $f, g : a \too b$ is a co-limit for the diagram
+        % https://q.uiver.app/?q=WzAsMixbMCwwLCJhIl0sWzIsMCwiYiJdLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dXQ==
+        \[\begin{tikzcd}
+            {a} && {b}
+            \arrow["{g}"', from=1-1, to=1-3, shift right=1]
+            \arrow["{f}", from=1-1, to=1-3, shift left=1]
+        \end{tikzcd}\]
+    \end{defi}
+    Let's work backwards from that definition and try to reach something similar to \cref{equalizer} for equalizers!
+    A co-cone over the above diagram consist of an object $c$, and arrows $f_a : a \to c$ and $f_b : b \to c$ such that
+    % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhIl0sWzIsMCwiYiJdLFsxLDIsImMiXSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwyLCJmX2EiLDJdLFsxLDIsImZfYiJdXQ==
+    \[\begin{tikzcd}
+        {a} && {b} \\
+        \\
+        & {c}
+        \arrow["{g}"', from=1-1, to=1-3, shift right=1]
+        \arrow["{f}", from=1-1, to=1-3, shift left=1]
+        \arrow["{f_a}"', from=1-1, to=3-2]
+        \arrow["{f_b}", from=1-3, to=3-2]
+    \end{tikzcd}\]
+    commutes. But that means that $f_b \o f = f_a$ and $f_b \o g = f_a$. So we can simply drop the $f_a$ and demand an $f_b$ making
+    % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhIl0sWzIsMCwiYiJdLFs0LDAsImMiXSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJmX2IiXV0=
+    \[\begin{tikzcd}
+        {a} && {b} && {c}
+        \arrow["{g}"', from=1-1, to=1-3, shift right=1]
+        \arrow["{f}", from=1-1, to=1-3, shift left=1]
+        \arrow["{f_b}", from=1-3, to=1-5]
+    \end{tikzcd}\]
+    commute.
+    That gave us our co-cone, but what we want is a co-limit: \emph{the} co-cone that is universal among co-cones.
+    So if we have a $c'$ and $f_b'$ such that $f_b' \o f = f_b' \o g$, then $c$ must must factor through $c'$ in a unique way:
+    % https://q.uiver.app/?q=WzAsNCxbMCwwLCJhIl0sWzIsMCwiYiJdLFs0LDAsImMiXSxbNCwyLCJjJyJdLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsImZfYiJdLFsxLDMsImZfYiciLDJdLFsyLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \[\begin{tikzcd}
+        {a} && {b} && {c} \\
+        \\
+        &&&& {c'}
+        \arrow["{g}"', from=1-1, to=1-3, shift right=1]
+        \arrow["{f}", from=1-1, to=1-3, shift left=1]
+        \arrow["{f_b}", from=1-3, to=1-5]
+        \arrow["{f_b'}"', from=1-3, to=3-5]
+        \arrow[from=1-5, to=3-5, dashed]
+    \end{tikzcd}\]
+
+\section{Pullbacks}
+    \begin{defi}
+        Given $f: a \to c$ and $g : b \to c$, a \emph{pullback} is a limit for the diagram 
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhIl0sWzIsMCwiYyJdLFs0LDAsImIiXSxbMCwxLCJmIl0sWzIsMSwiZyIsMl1d
+        \[\begin{tikzcd}
+            {a} && {c} && {b}
+            \arrow["{f}", from=1-1, to=1-3]
+            \arrow["{g}"', from=1-5, to=1-3]
+        \end{tikzcd}\]
+    \end{defi}
+    A cone for this diagram takes the form of an object $p$ with arrows $f' : p \to b$ and $g' : p \to a$ so that
+    % https://q.uiver.app/?q=WzAsNCxbMCwyLCJhIl0sWzIsMiwiYyJdLFsyLDAsImIiXSxbMCwwLCJwIl0sWzAsMSwiZiJdLFsyLDEsImciLDJdLFszLDIsImYnIiwyXSxbMywwLCJnJyJdXQ==
+    \[\begin{tikzcd}
+        {p} && {b} \\
+        \\
+        {a} && {c}
+        \arrow["{f}", from=3-1, to=3-3]
+        \arrow["{g}"', from=1-3, to=3-3]
+        \arrow["{f'}"', from=1-1, to=1-3]
+        \arrow["{g'}", from=1-1, to=3-1]
+    \end{tikzcd}\]
+    commutes.
+    And the limit means that any cone factors through:
+    % https://q.uiver.app/?q=WzAsNSxbMSwzLCJhIl0sWzMsMywiYyJdLFszLDEsImIiXSxbMSwxLCJwIl0sWzAsMCwicCciXSxbMCwxLCJmIl0sWzIsMSwiZyIsMl0sWzMsMiwiZiciLDJdLFszLDAsImcnIl0sWzQsMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzQsMiwiZicnIl0sWzQsMCwiZycnIl1d
+    \[\begin{tikzcd}
+        {p'} \\
+        & {p} && {b} \\
+        \\
+        & {a} && {c}
+        \arrow["{f}", from=4-2, to=4-4]
+        \arrow["{g}"', from=2-4, to=4-4]
+        \arrow["{f'}"', from=2-2, to=2-4]
+        \arrow["{g'}", from=2-2, to=4-2]
+        \arrow[from=1-1, to=2-2, dashed]
+        \arrow["{f''}", from=1-1, to=2-4]
+        \arrow["{g''}", from=1-1, to=4-2]
+    \end{tikzcd}\]
+
+    \begin{exercise}
+        Suppose
+        % https://q.uiver.app/?q=WzAsNCxbMCwyLCJjIl0sWzAsMCwiYSJdLFsyLDAsImIiXSxbMiwyLCJkIl0sWzEsMiwiZyJdLFswLDMsImYiXSxbMiwzXSxbMSwwXV0=
+        \[\begin{tikzcd}
+            {a} && {b} \\
+            \\
+            {c} && {d}
+            \arrow["{g}", from=1-1, to=1-3]
+            \arrow["{f}", from=3-1, to=3-3]
+            \arrow[from=1-3, to=3-3]
+            \arrow[from=1-1, to=3-1]
+        \end{tikzcd}\]
+        is a pullback square, and $f$ is monic.
+        Now suppose we have parallel $h_1, h_2 : e \too a$
+        % https://q.uiver.app/?q=WzAsNSxbMiwyLCJjIl0sWzIsMCwiYSJdLFs0LDAsImIiXSxbNCwyLCJkIl0sWzAsMCwiZSJdLFsxLDIsImciXSxbMCwzLCJmIl0sWzIsMywiZyciLDFdLFsxLDAsImYnIiwxXSxbNCwxLCJoXzEiLDEseyJjdXJ2ZSI6LTF9XSxbNCwxLCJoXzIiLDEseyJjdXJ2ZSI6MX1dXQ==
+        \[\begin{tikzcd}
+            {e} && {a} && {b} \\
+            \\
+            && {c} && {d}
+            \arrow["{g}", from=1-3, to=1-5]
+            \arrow["{f}", from=3-3, to=3-5]
+            \arrow["{g'}" description, from=1-5, to=3-5]
+            \arrow["{f'}" description, from=1-3, to=3-3]
+            \arrow["{h_1}" description, from=1-1, to=1-3, curve={height=-6pt}]
+            \arrow["{h_2}" description, from=1-1, to=1-3, curve={height=6pt}]
+        \end{tikzcd}\]
+        so that $g \o h_1 = g \o h_2$.
+        Then $$g' \o g \o h_1 = g' \o g \o h_2.$$
+        From the original pullback we have $g' \o g = f \o f'$,
+        so substituting on both sides gives $f \o f' \o h_1 = f \o f' \o h_2$.
+        Since $f$ is monic, $f' \o h_1 = f' \o h_2$.
+
+        But also, substituting on one side gives $g' \o g \o h_1 = f \o f' \o h_1$.
+        Then
+        % https://q.uiver.app/?q=WzAsNCxbMCwyLCJjIl0sWzAsMCwiZSJdLFsyLDAsImIiXSxbMiwyLCJkIl0sWzEsMiwiZyBcXG8gaF8xID0gZyBcXG8gaF8yIl0sWzAsMywiZiJdLFsyLDMsImcnIiwxXSxbMSwwLCJmJyBcXG8gaF8xID0gZicgXFxvIGhfMiIsMV1d
+        \[\begin{tikzcd}
+            {e} && {b} \\
+            \\
+            {c} && {d}
+            \arrow["{g \o h_1 = g \o h_2}", from=1-1, to=1-3]
+            \arrow["{f}", from=3-1, to=3-3]
+            \arrow["{g'}" description, from=1-3, to=3-3]
+            \arrow["{f' \o h_1 = f' \o h_2}" description, from=1-1, to=3-1]
+        \end{tikzcd}\]
+        commutes, meaning it must factor uniquely through our original pullback.
+        Thus the arrow $e \to a$ is unique, meaning $h_1 = h_2$.
+        Conclude $f$ is monic.
+
+    \end{exercise}
+
+\section{Pushouts}
+
+    \begin{defi}
+        Given arrows $f : a \to b$ and $g : a \to c$, a \emph{pushout} is a colimit for the diagram
+        % https://q.uiver.app/?q=WzAsMyxbMiwwLCJhIl0sWzAsMCwiYiJdLFs0LDAsImMiXSxbMCwxLCJmIl0sWzAsMiwiZyIsMl1d
+        \[\begin{tikzcd}
+            {b} && {a} && {c}
+            \arrow["{f}", from=1-3, to=1-1]
+            \arrow["{g}"', from=1-3, to=1-5]
+        \end{tikzcd}\]
+    \end{defi}
+
+    The co-limit, or universal co-cone for the above diagram consists of an object $d$ and arrows $f' : c \to d$ and $g' : b \to d$ so that
+    $g' \o f = f' \o g$.
+    Further, if there is a $d', f'', g''$ behaving the same way, then $d$ will factor uniquely through it.
+    % https://q.uiver.app/?q=WzAsNSxbMCwwLCJhIl0sWzIsMCwiYiJdLFswLDIsImMiXSxbMiwyLCJkIl0sWzQsMywiZCciXSxbMCwxLCJmIl0sWzAsMiwiZyIsMl0sWzIsMywiZiciXSxbMSwzLCJnJyIsMl0sWzEsNCwiZycnIl0sWzIsNCwiZicnIiwyXSxbMyw0LCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+    \[\begin{tikzcd}
+        {a} && {b} \\
+        \\
+        {c} && {d} \\
+        &&&& {d'}
+        \arrow["{f}", from=1-1, to=1-3]
+        \arrow["{g}"', from=1-1, to=3-1]
+        \arrow["{f'}", from=3-1, to=3-3]
+        \arrow["{g'}"', from=1-3, to=3-3]
+        \arrow["{g''}", from=1-3, to=4-5]
+        \arrow["{f''}"', from=3-1, to=4-5]
+        \arrow[from=3-3, to=4-5, dashed]
+    \end{tikzcd}\]
+
+\section{Completeness}
+    \begin{defi}
+        A category is \emph{complete} if every diagram has a limit.
+    \end{defi}
+    \begin{defi}
+        A category if \emph{finitely complete} if every \emph{finite} diagram has a limit.
+    \end{defi}
+    \begin{fact}
+        If $C$ has a terminal object and a pullback for each pair of arrows with common codomain,
+        then $C$ is finitely complete.
+    \end{fact}
+
+    \begin{exercise}
+        Working in a category with pullbacks and products, and
+        given a parallel pair $f, g : a \too b$, 
+        first form the product:
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhIl0sWzQsMCwiYiJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsMF0sWzIsMV0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV1d
+        \[\begin{tikzcd}
+            {a} &&&& {b} \\
+            \\
+            && {a \times b}
+            \arrow[from=3-3, to=1-1]
+            \arrow[from=3-3, to=1-5]
+            \arrow["{f}", from=1-1, to=1-5, shift left=1]
+            \arrow["{g}"', from=1-1, to=1-5, shift right=1]
+        \end{tikzcd}\]
+        Then we can find the two product arrows
+        % https://q.uiver.app/?q=WzAsNCxbMiwwLCJhIl0sWzQsMiwiYiJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzAsMiwiYSJdLFsyLDFdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dLFsyLDNdLFswLDMsIjFfYSIsMl0sWzAsMiwiIiwyLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwyLCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            && {a} \\
+            \\
+            {a} && {a \times b} && {b}
+            \arrow[from=3-3, to=3-5]
+            \arrow["{f}", from=1-3, to=3-5, shift left=1]
+            \arrow["{g}"', from=1-3, to=3-5, shift right=1]
+            \arrow[from=3-3, to=3-1]
+            \arrow["{1_a}"', from=1-3, to=3-1]
+            \arrow[from=1-3, to=3-3, shift right=1, dashed]
+            \arrow[from=1-3, to=3-3, shift left=1, dashed]
+        \end{tikzcd}\]
+        $\langle 1_a, f \rangle$ and $\langle 1_a, g \rangle$. Since they share a codomain we can form the pullback:
+        % https://q.uiver.app/?q=WzAsNCxbMiwwLCJhIl0sWzIsMiwiYSBcXHRpbWVzIGIiXSxbMCwyLCJhIl0sWzAsMCwiZCJdLFsyLDEsIlxcbGFuZ2xlIDFfYSwgZiBcXHJhbmdsZSJdLFswLDEsIlxcbGFuZ2xlIDFfYSwgZyBcXHJhbmdsZSJdLFszLDIsInAiLDJdLFszLDAsInEiXV0=
+        \[\begin{tikzcd}
+            {d} && {a} \\
+            \\
+            {a} && {a \times b}
+            \arrow["{\langle 1_a, f \rangle}", from=3-1, to=3-3]
+            \arrow["{\langle 1_a, g \rangle}", from=1-3, to=3-3]
+            \arrow["{p}"', from=1-1, to=3-1]
+            \arrow["{q}", from=1-1, to=1-3]
+        \end{tikzcd}\]
+        show p=q...
+    \end{exercise}
+
