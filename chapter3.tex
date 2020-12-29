@@ -317,7 +317,7 @@
             \arrow["{h}", from=1-3, to=3-3, dashed]
         \end{tikzcd}\]
         commutes. This is denoted
-        $$c := \langle f, g \rangle.$$
+        $$h := \langle f, g \rangle.$$
     \end{defi}
 
     \begin{fact} \label{product has one identity}
@@ -1284,8 +1284,8 @@
     \end{fact}
 
     \begin{exercise}
-        Working in a category with pullbacks and products, and
-        given a parallel pair $f, g : a \too b$, 
+        Working in a category with pullbacks and products, we demonstrate how to constuct equalizers.
+        Given a parallel pair $f, g : a \too b$, 
         first form the product:
         % https://q.uiver.app/?q=WzAsMyxbMCwwLCJhIl0sWzQsMCwiYiJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzIsMF0sWzIsMV0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV1d
         \[\begin{tikzcd}
@@ -1297,31 +1297,184 @@
             \arrow["{f}", from=1-1, to=1-5, shift left=1]
             \arrow["{g}"', from=1-1, to=1-5, shift right=1]
         \end{tikzcd}\]
-        Then we can find the two product arrows
-        % https://q.uiver.app/?q=WzAsNCxbMiwwLCJhIl0sWzQsMiwiYiJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzAsMiwiYSJdLFsyLDFdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dLFsyLDNdLFswLDMsIjFfYSIsMl0sWzAsMiwiIiwyLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwyLCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        Then we can find the two product arrows $f' = \langle 1_a, f \rangle$ and $g' = \langle 1_a, g \rangle$.
+        % https://q.uiver.app/?q=WzAsNCxbMiwwLCJhIl0sWzQsMiwiYiJdLFsyLDIsImEgXFx0aW1lcyBiIl0sWzAsMiwiYSJdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dLFsyLDMsInByX2EiXSxbMCwzLCIxX2EiLDJdLFswLDIsIlxcbGFuZ2xlMV9hLCBmIFxccmFuZ2xlIiwyLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwyLCJcXGxhbmdsZTFfYSwgZyBcXHJhbmdsZSIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDEsInByX2IiLDJdXQ==
         \[\begin{tikzcd}
             && {a} \\
             \\
             {a} && {a \times b} && {b}
-            \arrow[from=3-3, to=3-5]
             \arrow["{f}", from=1-3, to=3-5, shift left=1]
             \arrow["{g}"', from=1-3, to=3-5, shift right=1]
-            \arrow[from=3-3, to=3-1]
+            \arrow["{pr_a}", from=3-3, to=3-1]
             \arrow["{1_a}"', from=1-3, to=3-1]
-            \arrow[from=1-3, to=3-3, shift right=1, dashed]
-            \arrow[from=1-3, to=3-3, shift left=1, dashed]
+            \arrow["{\langle1_a, f \rangle}"', from=1-3, to=3-3, shift right=1, dashed]
+            \arrow["{\langle1_a, g \rangle}", from=1-3, to=3-3, shift left=1, dashed]
+            \arrow["{pr_b}"', from=3-3, to=3-5]
         \end{tikzcd}\]
-        $\langle 1_a, f \rangle$ and $\langle 1_a, g \rangle$. Since they share a codomain we can form the pullback:
+        Notice that we get the following facts which you can wager will be made use of shortly:
+        $$pr_a \o \langle 1_a, f \rangle = 1_a,$$
+        $$pr_a \o \langle1_a, g \rangle = 1_a,$$
+        $$pr_b \o \langle 1_a, f \rangle = f,$$
+        $$pr_b \o \langle1_a, g \rangle = g.$$
+        Since $\langle1_a, f \rangle$ and $\langle1_a, g \rangle$ share a codomain we can form the pullback:
         % https://q.uiver.app/?q=WzAsNCxbMiwwLCJhIl0sWzIsMiwiYSBcXHRpbWVzIGIiXSxbMCwyLCJhIl0sWzAsMCwiZCJdLFsyLDEsIlxcbGFuZ2xlIDFfYSwgZiBcXHJhbmdsZSJdLFswLDEsIlxcbGFuZ2xlIDFfYSwgZyBcXHJhbmdsZSJdLFszLDIsInAiLDJdLFszLDAsInEiXV0=
         \[\begin{tikzcd}
             {d} && {a} \\
             \\
             {a} && {a \times b}
+            \arrow["{\langle1_a, f \rangle}", from=3-1, to=3-3]
+            \arrow["{\langle1_a, g \rangle}", from=1-3, to=3-3]
+            \arrow["{p}"', from=1-1, to=3-1]
+            \arrow["{q}", from=1-1, to=1-3]
+        \end{tikzcd}\]
+        with $\langle 1_a, f \rangle \o p = \langle1_a, g \rangle \o q$.
+        We can tack on the projection functions to move forward:
+        % https://q.uiver.app/?q=WzAsNixbMiwwLCJhIl0sWzIsMiwiYSBcXHRpbWVzIGIiXSxbMCwyLCJhIl0sWzAsMCwiZCJdLFszLDMsImEiXSxbMSwzLCJiIl0sWzIsMSwiXFxsYW5nbGUgMV9hLCBmIFxccmFuZ2xlIl0sWzAsMSwiXFxsYW5nbGUgMV9hLCBnIFxccmFuZ2xlIl0sWzMsMiwicCIsMl0sWzMsMCwicSJdLFsxLDQsInByX2EiLDJdLFsxLDUsInByX2IiXV0=
+        \[\begin{tikzcd}
+            {d} && {a} \\
+            \\
+            {a} && {a \times b} \\
+            & {b} && {a}
             \arrow["{\langle 1_a, f \rangle}", from=3-1, to=3-3]
             \arrow["{\langle 1_a, g \rangle}", from=1-3, to=3-3]
             \arrow["{p}"', from=1-1, to=3-1]
             \arrow["{q}", from=1-1, to=1-3]
+            \arrow["{pr_a}"', from=3-3, to=4-4]
+            \arrow["{pr_b}", from=3-3, to=4-2]
         \end{tikzcd}\]
-        show p=q...
+        First, 
+        $$pr_a \o \langle 1_a, f \rangle \o p = pr_a \o \langle1_a, g \rangle \o q.$$
+        Substituting from above gives
+        $$1_a \o p = 1_a \o q,$$
+        or $p = q$.
+        So we can dispense with $q$ from here on. Let's tack on the other projection function:
+        $$pr_b \o \langle 1_a, f \rangle \o p = pr_b \o \langle1_a, g \rangle \o p.$$
+        Substituting from above,
+        $$f \o p = g \o p.$$
+        Therefore $p$ is an equalizer of $f$ and $g$.
+
+    \end{exercise}
+
+    \begin{exercise}
+        Working in a category with products and equalizers, we demonstrate how to construct pullbacks.
+        % Given $f : a \to c$ and $g : b \to c$ we first form the products $a \times c$ and $b \times c$,
+        % and retrieve the product arrows $\langle 1_a, f \rangle : a \to a \times c$ and $\langle 1_b, g \rangle : b \to b \times c$
+
+        % % https://q.uiver.app/?q=WzAsNyxbMCwwLCJhIl0sWzIsMCwiYyJdLFs0LDAsImIiXSxbMSwwLCJhIFxcdGltZXMgYyJdLFszLDAsImIgXFx0aW1lcyBjICJdLFsxLDIsImEiXSxbMywyLCJiIl0sWzMsMF0sWzMsMV0sWzQsMV0sWzQsMl0sWzUsMSwiZiIsMl0sWzYsMSwiZyJdLFs1LDAsIjFfYSJdLFs2LDIsIjFfYiIsMl0sWzUsMywiXFxsYW5nbGUgMV9hLCBmIFxccmFuZ2xlIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsNCwiXFxsYW5nbGUgMV9iLCBnIFxccmFuZ2xlIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        % \[\begin{tikzcd}
+        %     {a} & {a \times c} & {c} & {b \times c } & {b} \\
+        %     \\
+        %     & {a} && {b}
+        %     \arrow[from=1-2, to=1-1]
+        %     \arrow[from=1-2, to=1-3]
+        %     \arrow[from=1-4, to=1-3]
+        %     \arrow[from=1-4, to=1-5]
+        %     \arrow["{f}"', from=3-2, to=1-3]
+        %     \arrow["{g}", from=3-4, to=1-3]
+        %     \arrow["{1_a}", from=3-2, to=1-1]
+        %     \arrow["{1_b}"', from=3-4, to=1-5]
+        %     \arrow["{\langle 1_a, f \rangle}" description, from=3-2, to=1-2, dashed]
+        %     \arrow["{\langle 1_b, g \rangle}" description, from=3-4, to=1-4, dashed]
+        % \end{tikzcd}\]
+        Given $f : a \to c$ and $g : b \to c$, form the product $a \times b$ and the parallel functions $f \circ pr_a, g \circ pr_b : a \times b \too c$:
+        % https://q.uiver.app/?q=WzAsNCxbMCwxLCJhXFx0aW1lcyBiIl0sWzIsMCwiYSJdLFsyLDIsImIiXSxbNCwxLCJjIl0sWzAsMSwicHJfYSJdLFswLDIsInByX2IiLDJdLFsxLDMsImYiXSxbMiwzLCJnIiwyXV0=
+        \[\begin{tikzcd}
+            && {a} \\
+            {a\times b} &&&& {c} \\
+            && {b}
+            \arrow["{pr_a}", from=2-1, to=1-3]
+            \arrow["{pr_b}"', from=2-1, to=3-3]
+            \arrow["{f}", from=1-3, to=2-5]
+            \arrow["{g}"', from=3-3, to=2-5]
+        \end{tikzcd}\]
+        Then there is an equalizer $i : e \to a \times b$ such that $(f \o pr_a) \o i = (g \o pr_b) \o i$:
+        % https://q.uiver.app/?q=WzAsMyxbMiwwLCJhXFx0aW1lcyBiIl0sWzQsMCwiYyJdLFswLDAsImUiXSxbMCwxLCJmIFxcY2lyYyBwcl9hIiwxLHsiY3VydmUiOi0xfV0sWzAsMSwiZyBcXGNpcmMgcHJfYiIsMSx7ImN1cnZlIjoxfV0sWzIsMCwiaSIsMV1d
+        \[\begin{tikzcd}
+            {e} && {a\times b} && {c}
+            \arrow["{f \circ pr_a}" description, from=1-3, to=1-5, curve={height=-6pt}]
+            \arrow["{g \circ pr_b}" description, from=1-3, to=1-5, curve={height=6pt}]
+            \arrow["{i}" description, from=1-1, to=1-3]
+        \end{tikzcd}\]
+        But then $f \o (pr_a \o i) = g \o (pr_b \o i)$ meaning 
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJlIl0sWzAsMiwiYSJdLFsyLDAsImIiXSxbMiwyLCJjIl0sWzIsMywiZyJdLFsxLDMsImYiLDJdLFswLDIsInByX2IgXFxjaXJjIGkiXSxbMCwxLCJwcl9hIFxcY2lyYyBpIiwyXV0=
+        \[\begin{tikzcd}
+            {e} && {b} \\
+            \\
+            {a} && {c}
+            \arrow["{g}", from=1-3, to=3-3]
+            \arrow["{f}"', from=3-1, to=3-3]
+            \arrow["{pr_b \circ i}", from=1-1, to=1-3]
+            \arrow["{pr_a \circ i}"', from=1-1, to=3-1]
+        \end{tikzcd}\]
+        commutes. 
+        % If we have another $e', i'$ so that $f \o pr_a \o i' = g \o pr_b \o i'$, then there is a unique $h$ factoring through our original equalizer $e$:
+        % % https://q.uiver.app/?q=WzAsNCxbMiwyLCJhXFx0aW1lcyBiIl0sWzQsMiwiYyJdLFswLDIsImUiXSxbMCwwLCJlJyJdLFswLDEsImYgXFxjaXJjIHByX2EiLDEseyJjdXJ2ZSI6LTF9XSxbMCwxLCJnIFxcY2lyYyBwcl9iIiwxLHsiY3VydmUiOjF9XSxbMiwwLCJpIiwxXSxbMywwLCJpJyJdLFszLDIsImgiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        % \[\begin{tikzcd}
+        %     {e'} \\
+        %     \\
+        %     {e} && {a\times b} && {c}
+        %     \arrow["{f \circ pr_a}" description, from=3-3, to=3-5, curve={height=-6pt}]
+        %     \arrow["{g \circ pr_b}" description, from=3-3, to=3-5, curve={height=6pt}]
+        %     \arrow["{i}" description, from=3-1, to=3-3]
+        %     \arrow["{i'}", from=1-1, to=3-3]
+        %     \arrow["{h}", from=1-1, to=3-1, dashed]
+        % \end{tikzcd}\]
+        To see universality, suppose there is another $e', i_a, i_b$ such that $f\o i_a = g \o i_b$, or  
+        % https://q.uiver.app/?q=WzAsNSxbMSwxLCJlIl0sWzEsMywiYSJdLFszLDEsImIiXSxbMywzLCJjIl0sWzAsMCwiZSciXSxbMiwzLCJnIl0sWzEsMywiZiIsMl0sWzAsMiwicHJfYiBcXGNpcmMgaSJdLFswLDEsInByX2EgXFxjaXJjIGkiLDJdLFs0LDIsImlfYiIsMCx7ImN1cnZlIjotM31dLFs0LDEsImlfYSIsMix7ImN1cnZlIjo0fV1d
+        \[\begin{tikzcd}
+            {e'} \\
+            & {e} && {b} \\
+            \\
+            & {a} && {c}
+            \arrow["{g}", from=2-4, to=4-4]
+            \arrow["{f}"', from=4-2, to=4-4]
+            \arrow["{pr_b \circ i}", from=2-2, to=2-4]
+            \arrow["{pr_a \circ i}"', from=2-2, to=4-2]
+            \arrow["{i_b}", from=1-1, to=2-4, curve={height=-18pt}]
+            \arrow["{i_a}"', from=1-1, to=4-2, curve={height=18pt}]
+        \end{tikzcd}\]
+        commutes. Then we use the product $a \times b$ to retrieve the unique function $\langle i_a, i_b \rangle$:
+        % https://q.uiver.app/?q=WzAsNCxbMSwyLCJhXFx0aW1lcyBiIl0sWzAsMiwiYSJdLFsyLDIsImIiXSxbMSwwLCJlJyJdLFswLDFdLFswLDJdLFszLDEsImlfYSIsMl0sWzMsMiwiaV9iIl0sWzMsMCwiXFxsYW5nbGUgaV9hLCBpX2IgXFxyYW5nbGUiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            & {e'} \\
+            \\
+            {a} & {a\times b} & {b}
+            \arrow[from=3-2, to=3-1]
+            \arrow[from=3-2, to=3-3]
+            \arrow["{i_a}"', from=1-2, to=3-1]
+            \arrow["{i_b}", from=1-2, to=3-3]
+            \arrow["{\langle i_a, i_b \rangle}" description, from=1-2, to=3-2, dashed]
+        \end{tikzcd}\]
+        Here $i_a = pr_a \o \langle i_a, i_b \rangle$ and $i_b = pr_b \o \langle i_a, i_b \rangle$.
+        But since $f\o i_a = g \o i_b$ we have
+        $f \o pr_a \o \langle i_a, i_b \rangle = g \o pr_b \o \langle i_a, i_b \rangle$,
+        meaning that $\langle i_a, i_b \rangle$ functions as an equalizer:
+        % https://q.uiver.app/?q=WzAsNCxbMiwyLCJhXFx0aW1lcyBiIl0sWzQsMiwiYyJdLFswLDIsImUiXSxbMCwwLCJlJyJdLFswLDEsImYgXFxjaXJjIHByX2EiLDEseyJjdXJ2ZSI6LTF9XSxbMCwxLCJnIFxcY2lyYyBwcl9iIiwxLHsiY3VydmUiOjF9XSxbMiwwLCJpIiwxXSxbMywwLCJcXGxhbmdsZSBpX2EsIGlfYiBcXHJhbmdsZSIsMV0sWzMsMiwiaCIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            {e'} \\
+            \\
+            {e} && {a\times b} && {c}
+            \arrow["{f \circ pr_a}" description, from=3-3, to=3-5, curve={height=-6pt}]
+            \arrow["{g \circ pr_b}" description, from=3-3, to=3-5, curve={height=6pt}]
+            \arrow["{i}" description, from=3-1, to=3-3]
+            \arrow["{\langle i_a, i_b \rangle}" description, from=1-1, to=3-3]
+            \arrow["{h}" description, from=1-1, to=3-1, dashed]
+        \end{tikzcd}\]
+        So we get the unique factorization $h : e' \to e$ from the equalizer's universal property, and plug it straight back into our commutative square to see that we really have the universal pullback:
+        % https://q.uiver.app/?q=WzAsNSxbMSwxLCJlIl0sWzEsMywiYSJdLFszLDEsImIiXSxbMywzLCJjIl0sWzAsMCwiZSciXSxbMiwzLCJnIl0sWzEsMywiZiIsMl0sWzAsMiwicHJfYiBcXGNpcmMgaSJdLFswLDEsInByX2EgXFxjaXJjIGkiLDJdLFs0LDIsImlfYiIsMCx7ImN1cnZlIjotMX1dLFs0LDEsImlfYSIsMix7ImN1cnZlIjoyfV0sWzQsMCwiaCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+        \[\begin{tikzcd}
+            {e'} \\
+            & {e} && {b} \\
+            \\
+            & {a} && {c}
+            \arrow["{g}", from=2-4, to=4-4]
+            \arrow["{f}"', from=4-2, to=4-4]
+            \arrow["{pr_b \circ i}", from=2-2, to=2-4]
+            \arrow["{pr_a \circ i}"', from=2-2, to=4-2]
+            \arrow["{i_b}", from=1-1, to=2-4, curve={height=-18pt}]
+            \arrow["{i_a}"', from=1-1, to=4-2, curve={height=18pt}]
+            \arrow["{h}", from=1-1, to=2-2, dashed]
+        \end{tikzcd}\]
+
     \end{exercise}
 
