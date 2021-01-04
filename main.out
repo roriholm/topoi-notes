@@ -1,26 +1,4 @@
-\BOOKMARK [0][-]{chapter.1}{Mathematics = Set Theory?}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Where Set Theory Cracks}{chapter.1}% 2
-\BOOKMARK [0][-]{chapter.2}{What Categories Are}{}% 3
-\BOOKMARK [1][-]{section.2.1}{Functions as Sets}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.2}{Composition}{chapter.2}% 5
-\BOOKMARK [2][-]{subsection.2.2.1}{Identities}{section.2.2}% 6
-\BOOKMARK [1][-]{section.2.3}{Category Axioms}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.4}{Comma Categories}{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Arrows Instead of Epsilon}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Monic arrows}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Epic arrows}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.3}{Iso arrows}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.4}{Isomorphic objects}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.5}{Initial objects}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.6}{Terminal objects}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.7}{Duality}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.8}{Products}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.8.1}{Finite Products}{section.3.8}% 18
-\BOOKMARK [1][-]{section.3.9}{Co-products}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.10}{Equalizers}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.11}{Limits and co-limits}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.12}{Co-equalizers}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.13}{Pullbacks}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.14}{Pushouts}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.15}{Completeness}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.16}{Exponentials}{chapter.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Introducing Topoi}{}% 27
+\BOOKMARK [1][-]{section.4.1}{Subobjects}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.2}{Classifying Subobjects}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.3}{Definition of Topos}{chapter.4}% 30

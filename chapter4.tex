@@ -1,0 +1,218 @@
+\chapter{Introducing Topoi}
+\section{Subobjects}
+    \begin{defi}
+        A \emph{subobject} of $d$ is an equivalence class of monic arrows into $d$.
+    \end{defi}
+    We are using a new notion of equivalence. Start with the idea that a subobject is simply a monic arrow into $d$.
+    Now write that $f \subseteq g$ \emph{iff} these is an arrow $h : a \to b$ making
+    % https://q.uiver.app/?q=WzAsMyxbMiwxLCJkIl0sWzAsMCwiYSJdLFswLDIsImIiXSxbMiwwLCJnIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDAsImYiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMiwiaCIsMl1d
+    \[\begin{tikzcd}
+        {a} \\
+        && {d} \\
+        {b}
+        \arrow["{g}"', from=3-1, to=2-3, tail]
+        \arrow["{f}", from=1-1, to=2-3, tail]
+        \arrow["{h}"', from=1-1, to=3-1]
+    \end{tikzcd}\]
+    commute.
+
+    Now say that $f \cong g$ \emph{iff} $f \subseteq g$ and $g \subseteq f$.
+    % https://q.uiver.app/?q=WzAsMyxbMiwxLCJkIl0sWzAsMCwiYSJdLFswLDIsImIiXSxbMiwwLCJnIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFsxLDAsImYiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzEsMiwiaCIsMix7ImN1cnZlIjoxfV0sWzIsMSwiaSIsMix7ImN1cnZlIjoxfV1d
+    \[\begin{tikzcd}
+        {a} \\
+        && {d} \\
+        {b}
+        \arrow["{g}"', from=3-1, to=2-3, tail]
+        \arrow["{f}", from=1-1, to=2-3, tail]
+        \arrow["{i}"', from=1-1, to=3-1, curve={height=6pt}]
+        \arrow["{h}"', from=3-1, to=1-1, curve={height=6pt}]
+    \end{tikzcd}\]
+    Here, $g \o h = f$ and $f \o i = g$
+    \begin{exercise} \label{subobject isomorphism symmetric}
+        We wish to show that in the above diagram, $a$ and $b$ are isomorphic.
+        Substituting each of our `commuting' equations into the other in turn yields
+        $$f \o i \o h = f,$$
+        $$g \o h \o i = g.$$
+        Since both $f$ and $g$ are monic, left-cancel to get
+        $$i \o h = 1_a,$$
+        $$h \o i = 1_b.$$
+        Conclude that $h$ and $i$ are monic and mutual inverses. Thus $a$ and $b$ are isomorphic.
+    \end{exercise}
+
+    \begin{exercise}
+        Now we wish to show that $\cong$ in this sense is indeed an equivalence relation.
+        \begin{enumerate}
+            \item \emph{reflexivity: } $f \cong f$ for $f : a \to b$ since there is an arrow $1_a : a \to a$, and the relationship $a \subseteq a$ is reflexive.
+
+            \item \emph{symmetry: } If $f \cong g$ then $f \subseteq g$ and $g \subseteq f$. So by the symmetry of the word `and' we have that $g \cong f$.
+
+            \item \emph{transitivity: } Suppose $f \cong g$ and if $g \cong k$. Then from the first relation we know $f \subseteq g$ and $g \subseteq f$.  From the second we know $g \subseteq k$ and $k \subseteq g$.
+
+            Since $f \subseteq g$ and $g \subseteq k$, $f \subseteq k$.
+            And since $k \subseteq g$ and $g \subseteq f$, $k \subseteq f$.
+
+            Since $f \subseteq k$ and $k \subseteq f$, conclude $f \cong k$.
+        \end{enumerate}
+    \end{exercise}
+
+    \begin{exercise}
+        Suppose that $[f] = [f']$ and $[g] = [g']$.
+
+        ($\Rightarrow$) Suppose $f \subseteq g$.
+        Since $f \cong f'$, $f' \subseteq f$.
+        Then $f' \subseteq g'$
+        
+        ($\Leftarrow$) Suppose $f' \subseteq g'$.
+        Since $f \cong f'$, $f \subseteq f'$
+        Then $f \subseteq g$.
+        
+        Conclude $f \subseteq g$ iff $f' \subseteq g'$. In other words $\subseteq$ is stable under $\cong$.
+    \end{exercise}
+
+    \begin{exercise}
+        $$Sub(D) \cong P(D)$$
+    \end{exercise}
+
+    \begin{defi}
+        The \emph{naming arrow} for $f$
+    \end{defi}
+
+    \begin{exercise}
+        For any element $x : 1 \to a$ of $a$,
+        $$ev \o \langle \lceil f \rceil, x \rangle = f \o x$$
+    \end{exercise}
+
+
+\section{Classifying Subobjects}
+    We are seeking to generalize the situation where a subset $A \subseteq D$ has a characteristic function $\chi_A : D \to \set{0,1}$, where 
+        \[ \chi_A(x) =\begin{cases} 
+              1 & x \in A \\
+              0 & x \notin A.
+           \end{cases}
+        \]
+    In fact the functions from $D \to \set{0,1}$ are in bijection with all possible subsets of $D$.
+    Then given an $f : D \to \set{0,1}$ we define $A_f$ as the subset determined by $f$, and then we have
+    % https://q.uiver.app/?q=WzAsNCxbMCwwLCJBX2YiXSxbMiwwLCJEIl0sWzAsMiwiMSJdLFsyLDIsIlxcezAsMVxcfSJdLFswLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsMiwiISIsMl0sWzEsMywiZiJdLFsyLDMsInRydWUiLDJdXQ==
+    \[\begin{tikzcd}
+        {A_f} && {D} \\
+        \\
+        {1} && {\{0,1\}}
+        \arrow[from=1-1, to=1-3, hook]
+        \arrow["{!}"', from=1-1, to=3-1]
+        \arrow["{f}", from=1-3, to=3-3]
+        \arrow["{true}"', from=3-1, to=3-3]
+    \end{tikzcd}\]
+    is a pullback.
+
+    \begin{defi} \label{subobject classifier}
+        If $C$ is a category with a terminal object $1$, then a \emph{subobject classifier} consist of an object
+        $\Omega$, and an arrow $true : 1 \to \Omega$.
+
+        The $\Omega$ axiom is that for any monic $f : a \to d$ there is a unique arrow $\chi_f : d \to \Omega$ so that
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJhIl0sWzIsMCwiZCJdLFswLDIsIjEiXSxbMiwyLCJcXE9tZWdhIl0sWzAsMSwiZiJdLFswLDIsIiEiLDJdLFsxLDMsIlxcY2hpX2YiXSxbMiwzLCJ0cnVlIiwyXV0=
+        \[\begin{tikzcd}
+            {a} && {d} \\
+            \\
+            {1} && {\Omega}
+            \arrow["{f}", from=1-1, to=1-3]
+            \arrow["{!}"', from=1-1, to=3-1]
+            \arrow["{\chi_f}", from=1-3, to=3-3]
+            \arrow["{true}"', from=3-1, to=3-3]
+        \end{tikzcd}\]
+        is a pullback square.
+
+        The arrow $\chi_f$ is the \emph{characteristic arrow} of $f$.
+    \end{defi}
+
+    \begin{defi} \label{true bang}
+        For any $a$ there is a unique arrow $!: a \to 1$. The composite $true \o !$ yields an arrow denoted $true_a$:
+        % https://q.uiver.app/?q=WzAsMyxbMiwwLCIxIl0sWzIsMiwiXFxPbWVnYSJdLFswLDAsImEiXSxbMCwxLCJ0cnVlIiwyXSxbMiwwLCIhIl0sWzIsMSwidHJ1ZV9hIiwyXV0=
+        \[\begin{tikzcd}
+            {a} && {1} \\
+            \\
+            && {\Omega}
+            \arrow["{true}"', from=1-3, to=3-3]
+            \arrow["{!}", from=1-1, to=1-3]
+            \arrow["{true_a}"', from=1-1, to=3-3]
+        \end{tikzcd}\]
+    \end{defi}
+
+    \begin{exercise}
+        Plugging $ true : 1 \to \Omega$ into \cref{subobject classifier} gives:
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiXFxPbWVnYSJdLFswLDIsIjEiXSxbMiwyLCJcXE9tZWdhIl0sWzAsMSwidHJ1ZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMCwyLCIhIiwyXSxbMSwzLCJcXGNoaV97dHJ1ZX0iXSxbMiwzLCJ0cnVlIiwyXV0=
+        \[\begin{tikzcd}
+            {1} && {\Omega} \\
+            \\
+            {1} && {\Omega}
+            \arrow["{true}", from=1-1, to=1-3, tail]
+            \arrow["{!}"', from=1-1, to=3-1]
+            \arrow["{\chi_{true}}", from=1-3, to=3-3]
+            \arrow["{true}"', from=3-1, to=3-3]
+        \end{tikzcd}\]
+        and we see that $!$ must be the identity $1_1 : 1 \to 1$.
+        So for the diagram to be a pullback square we must have
+        $$\chi_{true} \o true = true \o 1_1 = true$$
+        and therefore
+        $$\chi_{true} = 1_\Omega.$$
+    \end{exercise}
+
+    \begin{exercise}
+        Plugging $1_\Omega : \Omega \to \Omega$ into \cref{subobject classifier} gives 
+        % https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXE9tZWdhIl0sWzIsMCwiXFxPbWVnYSJdLFswLDIsIjEiXSxbMiwyLCJcXE9tZWdhIl0sWzAsMSwidHJ1ZSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbMCwyLCIhIiwyXSxbMSwzLCJcXGNoaV97MV9cXE9tZWdhfSJdLFsyLDMsInRydWUiLDJdXQ==
+        \[\begin{tikzcd}
+            {\Omega} && {\Omega} \\
+            \\
+            {1} && {\Omega}
+            \arrow["{true}", from=1-1, to=1-3, tail]
+            \arrow["{!}"', from=1-1, to=3-1]
+            \arrow["{\chi_{1_\Omega}}", from=1-3, to=3-3]
+            \arrow["{true}"', from=3-1, to=3-3]
+        \end{tikzcd}\]
+        To be a pullback we must have 
+        $\chi_{1_\Omega} \o 1_\Omega = true \o !$.
+        Or
+        $$\chi_{1_\Omega} = true_\Omega$$
+        using the notation of \cref{true bang}.
+    \end{exercise}
+
+    \begin{exercise}
+        For any $f : a \to b$, since $!_a : a \to 1$ is unique:
+        % https://q.uiver.app/?q=WzAsMyxbMiwwLCJiIl0sWzEsMiwiMSJdLFswLDAsImEiXSxbMCwxLCIhX2IiXSxbMiwwLCJmIl0sWzIsMSwiIV9hIiwyXV0=
+        \[\begin{tikzcd}
+            {a} && {b} \\
+            \\
+            & {1}
+            \arrow["{!_b}", from=1-3, to=3-2]
+            \arrow["{f}", from=1-1, to=1-3]
+            \arrow["{!_a}"', from=1-1, to=3-2]
+        \end{tikzcd}\]
+        We must have $!_b \o f = !_a$. Thus
+        % https://q.uiver.app/?q=WzAsNCxbMiwwLCJiIl0sWzEsMiwiMSJdLFswLDAsImEiXSxbMSwzLCJcXE9tZWdhIl0sWzAsMSwiIV9iIl0sWzIsMCwiZiJdLFsyLDEsIiFfYSIsMl0sWzEsMywidHJ1ZSJdXQ==
+        \[\begin{tikzcd}
+            {a} && {b} \\
+            \\
+            & {1} \\
+            & {\Omega}
+            \arrow["{!_b}", from=1-3, to=3-2]
+            \arrow["{f}", from=1-1, to=1-3]
+            \arrow["{!_a}"', from=1-1, to=3-2]
+            \arrow["{true}", from=3-2, to=4-2]
+        \end{tikzcd}\]
+        commutes, or  $true \o !_b \o f = true \o !_a$. Therefore using \cref{true bang},
+        $$true_b \o f = true_a.$$
+    \end{exercise}
+
+\section{Definition of Topos}
+    \begin{defi}
+        An \emph{elementary topos} is a category which
+        \begin{enumerate}
+            \item is finitely complete.
+            \item is finitely co-complete.
+            \item has exponentiation.
+            \item has a subobject classifier.
+        \end{enumerate}
+    \end{defi}
+
+    \begin{fact}
+        More succinctly, a topos can be defined as a Cartesian closed category with a subobject classifier.
+    \end{fact}
