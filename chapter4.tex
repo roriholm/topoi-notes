@@ -70,11 +70,51 @@
     \end{exercise}
 
     \begin{exercise}
-        $$Sub(D) \cong P(D)$$
+        In \textbf{Set}, $Sub(D) \cong P(D)$.
+
+        First, observe that if $f_1, f_2$ are monic arrows (or equivalently, injective set functions) in a subobject $f \in Sub(D)$, they must have identical images.
+        For suppose they don't. Then there is no $h$ that can make
+        % https://q.uiver.app/?q=WzAsMyxbMiwxLCJEIl0sWzAsMCwiQSJdLFswLDIsIkIiXSxbMSwwLCJmXzEiXSxbMiwwLCJmXzIiLDJdLFsyLDEsImgiXV0=
+        \[\begin{tikzcd}
+            {A} \\
+            && {D} \\
+            {B}
+            \arrow["{f_1}", from=1-1, to=2-3]
+            \arrow["{f_2}"', from=3-1, to=2-3]
+            \arrow["{h}", from=3-1, to=1-1]
+        \end{tikzcd}\]
+        commute.
+
+        Then each $f \in Sub(D)$ determines a subset $C \subseteq D$, under the image of any particular member. For example, in the above diagram we have $f_1(A) = f_2(B)$. 
+
+        On the other hand, given a subset $C \subseteq D$, the inclusion function $i_C : C \to D$ is monic, and therefore $[i]$ is a subobject of $D$.
+
+        Furthermore we have $[i] = [f_1] = [f_2]$. Thus the image function and the inclusion function are inverses \emph{up to isomorphism},
+        so
+        $$Sub(D) \cong P(D).$$
+
     \end{exercise}
 
     \begin{defi}
-        The \emph{naming arrow} for $f$
+        The \emph{naming arrow} for $f$:
+
+        % https://q.uiver.app/?q=WzAsNyxbNCw0LCJhIl0sWzIsNCwiMSBcXHRpbWVzIGEiXSxbMiwyLCJiXmEgXFx0aW1lcyBhIl0sWzAsNCwiMSJdLFswLDIsImJeYSJdLFs0LDIsImEiXSxbNCwwLCJiIl0sWzEsMCwicHJfYSJdLFsxLDMsInByXzEiLDJdLFszLDQsIlxcbGNlaWwgZiBcXHJjZWlsIiwyXSxbMSwyLCJcXGxjZWlsIGYgXFxyY2VpbCBcXHRpbWVzIDFfYSIsMV0sWzIsNF0sWzIsNV0sWzIsNiwiZXYiXSxbNSw2LCJmIl0sWzAsNSwiMV9hIl1d
+        \[\begin{tikzcd}
+            &&&& {b} \\
+            \\
+            {b^a} && {b^a \times a} && {a} \\
+            \\
+            {1} && {1 \times a} && {a}
+            \arrow["{pr_a}", from=5-3, to=5-5]
+            \arrow["{pr_1}"', from=5-3, to=5-1]
+            \arrow["{\lceil f \rceil}"', from=5-1, to=3-1]
+            \arrow["{\lceil f \rceil \times 1_a}" description, from=5-3, to=3-3]
+            \arrow[from=3-3, to=3-1]
+            \arrow[from=3-3, to=3-5]
+            \arrow["{ev}", from=3-3, to=1-5]
+            \arrow["{f}", from=3-5, to=1-5]
+            \arrow["{1_a}", from=5-5, to=3-5]
+        \end{tikzcd}\]
     \end{defi}
 
     \begin{exercise}
@@ -216,3 +256,104 @@
     \begin{fact}
         More succinctly, a topos can be defined as a Cartesian closed category with a subobject classifier.
     \end{fact}
+
+\section{First Examples}
+
+\section{Bundles and Sheaves}
+
+    \begin{exercise}
+        We wish to show that
+        % https://q.uiver.app/?q=WzAsNixbMCwwLCJBIl0sWzIsMCwiQiJdLFsxLDEsIkkiXSxbMiwyLCIyIFxcdGltZXMgSSJdLFswLDIsIkkiXSxbMywzXSxbMCwxLCJrIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJmIiwyXSxbMSwyLCJnIl0sWzEsMywiXFxjaGlfayJdLFs0LDMsIlQiLDJdLFs0LDIsIjFfSSJdLFswLDQsImYiLDJdLFszLDIsInByX0kiLDJdXQ==
+        \[\begin{tikzcd}
+            {A} && {B} \\
+            & {I} \\
+            {I} && {2 \times I} \\
+            &&& {}
+            \arrow["{k}", from=1-1, to=1-3, hook]
+            \arrow["{f}"', from=1-1, to=2-2]
+            \arrow["{g}", from=1-3, to=2-2]
+            \arrow["{\chi_k}", from=1-3, to=3-3]
+            \arrow["{T}"', from=3-1, to=3-3]
+            \arrow["{1_I}", from=3-1, to=2-2]
+            \arrow["{f}"', from=1-1, to=3-1]
+            \arrow["{pr_I}"', from=3-3, to=2-2]
+        \end{tikzcd}\]
+        is a pullback.
+        Note that $1_I : I \to I$ is the terminal object in $Bn(I)$, and $f : A \to I$ is the unique arrow from itself (as an object) to the terminal object. So the desired outcome is to show that $\chi_k \o k = T \o f$.
+
+        Recall the definitions of $T : I \to 2 \times I$ and $\chi_k : B \to 2 \times I$ as product arrows:
+        $$T = \langle true \ \o \ !_I, 1_I \rangle,$$
+        $$\chi_k = \langle \chi_A, g \rangle:$$
+
+        % https://q.uiver.app/?q=WzAsOSxbNCw1XSxbMiwzLCIyIFxcdGltZXMgSSJdLFsyLDEsIkkiXSxbMiw1LCJCIl0sWzQsMywiSSJdLFswLDMsIjIiXSxbMSwyLCIxIl0sWzIsMCwiQSJdLFsyLDYsIkEiXSxbMSw1XSxbMSw0XSxbMiw2LCIhIiwyXSxbNiw1LCJ0cnVlIiwyXSxbMiw0LCIxX0kiXSxbMyw0LCJnIiwyXSxbMyw1LCJcXGNoaV9BIl0sWzMsMSwiXFxjaGlfayIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDEsIlQiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNywyLCJmIl0sWzgsMywiayIsMl1d
+        \[\begin{tikzcd}
+            && {A} \\
+            && {I} \\
+            & {1} \\
+            {2} && {2 \times I} && {I} \\
+            \\
+            && {B} && {} \\
+            && {A}
+            \arrow[from=4-3, to=4-1]
+            \arrow[from=4-3, to=4-5]
+            \arrow["{!_I}"', from=2-3, to=3-2]
+            \arrow["{true}"', from=3-2, to=4-1]
+            \arrow["{1_I}", from=2-3, to=4-5]
+            \arrow["{g}"', from=6-3, to=4-5]
+            \arrow["{\chi_A}", from=6-3, to=4-1]
+            \arrow["{\chi_k}" description, from=6-3, to=4-3, dashed]
+            \arrow["{T}" description, from=2-3, to=4-3, dashed]
+            \arrow["{f}", from=1-3, to=2-3]
+            \arrow["{k}"', from=7-3, to=6-3]
+        \end{tikzcd}\]
+        Because of \cref{composition distributes through product arrows} then we have
+        $$T \o f = \langle true \ \o \ !_I \o f, 1_I \o f \rangle,$$
+        $$\chi_k \o k = \langle \chi_A \o k, g \o k \rangle.$$
+
+        By virtue of being an inclusion (and an arrow in $Bn(I)$) we have
+        % https://q.uiver.app/?q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFsxLDIsIkkiXSxbMCwxLCJrIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJnIl0sWzAsMiwiZiIsMl1d
+        \[\begin{tikzcd}
+            {A} && {B} \\
+            \\
+            & {I}
+            \arrow["{k}", from=1-1, to=1-3, hook]
+            \arrow["{g}", from=1-3, to=3-2]
+            \arrow["{f}"', from=1-1, to=3-2]
+        \end{tikzcd}\]
+        commutes, or $f = g\o k$.
+        And since
+        % https://q.uiver.app/?q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiQiJdLFsyLDIsIjIiXSxbMCwyLCIxIl0sWzMsM10sWzAsMSwiayIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsMiwiXFxjaGlfQSJdLFszLDIsInRydWUiLDJdLFswLDMsIiEiLDJdXQ==
+        \[\begin{tikzcd}
+            {A} && {B} \\
+            \\
+            {1} && {2} \\
+            &&& {}
+            \arrow["{k}", from=1-1, to=1-3, hook]
+            \arrow["{\chi_A}", from=1-3, to=3-3]
+            \arrow["{true}"', from=3-1, to=3-3]
+            \arrow["{!_I}"', from=1-1, to=3-1]
+        \end{tikzcd}\]
+        is a pullback in \textbf{Set} we get that $\chi_A \o k = true \ \o \ !_I$.
+
+        Lastly, observe that
+        $$true \o !_I \o f = true \o !_A$$
+        since there is only one arrow $A \to 1$:
+        % https://q.uiver.app/?q=WzAsNCxbMSwxLCIxIl0sWzIsMCwiQSJdLFsyLDEsIkkiXSxbMCwyLCIyIl0sWzEsMiwiZiJdLFsyLDAsIiFfSSJdLFsxLDAsIiFfQSIsMl0sWzAsMywidHJ1ZSIsMl1d
+        \[\begin{tikzcd}
+            && {A} \\
+            & {1} & {I} \\
+            {2}
+            \arrow["{f}", from=1-3, to=2-3]
+            \arrow["{!_I}", from=2-3, to=2-2]
+            \arrow["{!_A}"', from=1-3, to=2-2]
+            \arrow["{true}"', from=2-2, to=3-1]
+        \end{tikzcd}\]
+        Now putting it all together gives
+        $$\langle \chi_A \o k, g \o k \rangle = \langle true \ \o \ !_I \o f, 1_I \o f \rangle,$$
+        or 
+        $$\langle \chi_A , g  \rangle \o k = \langle true \ \o \ !_I, 1_I \rangle \o f,$$
+        or 
+        $$T\o f = \chi_k \o k,$$
+        as was to be shown.
+
+    \end{exercise}
